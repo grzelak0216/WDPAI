@@ -1,84 +1,117 @@
-* {
-    color: blueviolet;
+body {
+    margin: 0;
 }
 
-body, h1 {
-    margin:  0;
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: transparent linear-gradient(180deg, #FDEB00F5 0%, #FAF7CA 28%, #FAF7CA 100%, #808080 100%) 0% 0% no-repeat padding-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    background-color: rgb(211, 211, 211);
+    width: 50%;
+    height: 60%;
+    text-align: center;
 }
 
-.login-form{
-    background-color: rgb(233, 255, 136);
+.slogan{
+    width: 90%;
+    text-align: center;
+    font: normal normal normal 84px/100px Javanese Text;
+    letter-spacing: NaNpx;
+    color: #0810FF;
+    margin: 0.2em;
 }
 
-.login-form, .logo{
-    height: 100vh;
-    width: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: row; 
-}
-
-.logo, .login-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-container {
+    width: 80%;
 }
 
 form {
+    text-align: center;
     display: flex;
-    flex-direction:  column;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    gap: 1em;
+    align-items: center;
+    width: 90%;
+    height: 540px;
+
+    background: #D7E1FC 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+}
+
+button {
+    width: 280px;
+    height: 84px;
+
+    background: #F7F767 0% 0% no-repeat padding-box;
+    border: 1px solid #F8F817;
+    border-radius: 32px;
+
+    text-align: center;
+    font: normal normal normal 40px/50px Segoe UI;
+    letter-spacing: 0px;
+    color: #000000;
+}
+
+input {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 28px;
+
+    padding: 1em;
+    margin: 1em;
+    width: 90%;
+
+    text-align: left;
+    font: normal normal normal 25px/50px Microsoft Sans Serif;
+    letter-spacing: 0px;
+    color: #000000;
 }
 
 
-
-/* CSS */
-.button-43 {
-  background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
-  border-radius: .5rem;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  display: flex;
-  font-size: 16px;
-  justify-content: center;
-  padding: 1rem 1.75rem;
-  text-decoration: none;
-  width: 100%;
-  border: 0;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-43:hover {
-  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
-}
-
-@media (min-width: 768px) {
-  .button-43 {
-    padding: 1rem 2rem;
-  }
-}
-
-@media screen and (max-device-width:411px), screen and (max-width:414px){
-    body{
+@media only screen and (max-device-width: 420px) {
+    .container {
         flex-direction: column;
     }
 
-    .logo{
-        height: 20vh;
+    * {
+        font-size: 36px;
     }
 
-    .login-form{
-        height: 80hv;
-    }    
+    .login-container{
+        width: 100%;
+        height: 60%;
+    }
+
+    form {
+        margin: auto;
+    }
+
+    img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .logo{
+        width: 90%;
+        height: 500%;
+    }
+
+    .slogan{
+        width: 100%;
+        font: normal normal normal 40px/40px Javanese Text;
+    }
+
+    input{
+        width: 80%;
+        height: 5%;
+        padding: 0.5em;
+        margin: 0.5em;
+    }
 }
