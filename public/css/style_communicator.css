@@ -15,13 +15,13 @@ body {
 }
 
 .logo {
-    width: 30vw;
+    width: 40vw;
     height: 20vh;
     text-align: center;
 }
 
 .slogan{
-    width: 30vw;
+    width: 40vw;
     text-align: center;
     font: normal normal normal 90px/100px Javanese Text;
     letter-spacing: NaNpx;
@@ -68,7 +68,7 @@ input {
 
     padding: 1em;
     margin: 1em;
-    width: 55vw;
+    width: 45vw;
 
     text-align: left;
     font: normal normal normal 25px/50px Microsoft Sans Serif;
