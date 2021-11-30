@@ -6,44 +6,10 @@
     flex-direction: column;
 }
 
-li i {
-    font-size: 2em;
-}
 
-a {
-    font-size: 1.5em;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.base-container > header > ul{
-    color: #2A01FF;
-    grid-gap: 3vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-content: center;
-    list-style-type: none;
-}
-
-.base-container > header > .header_logo{
-    /* height: 7vh; */
-    width: 10vw;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    line-height: 2em;
-}
-
-img{
-    height: 5vh;
-    margin: 0.5em;
-}
 
 .base-container > header{
-    width: 100vw - 2px;
-    /* height: 7vh; */
+    width: 100vw - 1px;
     background: transparent linear-gradient(180deg, #FCEB0A 0%, #FCF270 100%) 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     display: flex;
@@ -53,8 +19,51 @@ img{
     align-items: center;
 }
 
+li i {
+    font-size: 1.7em;
+}
+
+a {
+    font-size: 1.7em;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    text-justify: center;
+}
+
+.base-container > header > ul{
+    color: #2A01FF;
+    grid-gap: 3vw;
+    padding-right: 1.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    list-style-type: none;
+    align-items: center;  
+}
+
+.base-container > header > ul > li:nth-child(4)>i{
+    font-size: 3.5em;
+    text-align: center;
+    text-justify: center;
+    
+}
+
+.base-container > header > .header_logo{
+    width: 10vw;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    line-height: 3em;
+}
+
+.base-container > header > .header_logo > img{
+    height: 5vh;
+    margin: 0.5em;
+}
+
 .break_bars{
-    width: 100vw - 2px;
+    width: 100vw - 1px;
     height: 2vh;
     background: #D7E1FC 0% 0% no-repeat padding-box;
     border: 1px solid #000000;
@@ -74,24 +83,22 @@ section{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    align-content: center;
+    align-items: center;  
 }
 
 .socialmedia_bar{
-    /* margin: 0.5em; */
+    padding-right: 2em;
     display: flex;
     flex-direction: row;
     justify-content: right;
-    /* align-content: center; */
     grid-gap: 1vw;
 }
 
 .support_bar{
-    /* margin: 0.5em; */
+    padding-left: 2em;
     display: flex;
     flex-direction: row;
     justify-content: left;
-    /* align-content: center; */
     grid-gap: 4vw;
 }
 
