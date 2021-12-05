@@ -11,5 +11,7 @@ Router::get('registration', 'DefaultController');
 Router::get('profile_notice', 'DefaultController');
 Router::get('quotation', 'DefaultController');
 Router::get('courier_notice', 'DefaultController');
+Router::get('reservations', 'DefaultController');
+Router::get('transport_notice', 'DefaultController');
 
 Router::run($path);

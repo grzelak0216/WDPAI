@@ -24,14 +24,24 @@ class DefaultController extends AppController {
         $this->render('profile_notice');
     }
 
-    public function quotation() //do dokończenia 
+    public function quotation() 
     {
         $this->render('quotation');
     }
 
-    public function courier_notice() //do dokończenia 
+    public function courier_notice() 
     {
         $this->render('courier_notice');
+    }
+
+    public function reservations() 
+    {
+        $this->render('reservations');
+    }
+
+    public function transport_notice() 
+    {
+        $this->render('transport_notice');
     }
     
 }
