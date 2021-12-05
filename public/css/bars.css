@@ -9,7 +9,7 @@
 
 
 .base-container > header{
-    width: 100vw - 1px;
+    width: 100vw - 2px;
     background: transparent linear-gradient(180deg, #FCEB0A 0%, #FCF270 100%) 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     display: flex;
@@ -32,7 +32,7 @@ a {
 }
 
 .base-container > header > ul{
-    color: #2A01FF;
+    color: #0600c2;
     grid-gap: 3vw;
     padding-right: 1.5em;
     display: flex;
@@ -64,15 +64,9 @@ a {
 
 .break_bars{
     width: 100vw - 1px;
-    height: 2vh;
-    background: #D7E1FC 0% 0% no-repeat padding-box;
+    height: 1vh;
+    background: #0600c2 0% 0% no-repeat padding-box;
     border: 1px solid #000000;
-}
-
-section{
-    width: 100vw;
-    height: 85vh;
-    background-color: #707070;
 }
 
 .lower_bar{

@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+}
+.container {
+    width: 100vw;
+    height: 84vh;
+    background: #D7E1FC 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.container > .route_info{
+    padding: 0 0 1em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 2.5em;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+    padding: 0.5em;
+    overflow: auto;
+    
+}
+
+.orders>div>div>h2>img {
+    height: 6vh;
+    border-radius: 5vh;
+    object-fit: cover;
+}
+
+.orders>div>div>h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding-left: 1em;
+    column-gap: 0.5em;
+    font-size: 1.5em;
+}
+
+.orders>div>div {
+    height: 75%;
+    margin: 0.5em;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 1vh;
+}
+
+.orders>div>div>i{
+    width: 80%;
+    height: 15%;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+    column-gap: 1vh;
+    padding-left: 0.5em;
+}
+
+.orders>div {
+    border: 1px solid gray;
+    border-radius: 1em 1em 0 0;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-self: center;
+    align-self: center;
+    background: #ffffd5f5 0% 0% no-repeat padding-box; 
+}
+
+.orders > div > img{
+    height: 50%;
+    width: 100%;
+    
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+}
+
+.container > .buttons{
+    height: 6vh;
+
+    padding-right: 1.5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    align-content: center;
+    column-gap: 4vw;
+}
+
+.container > .buttons > button{
+    width: 12vw;
+    
+    background: #F7F767 0% 0% no-repeat padding-box;
+    border: 1px solid #F8F817;
+    border-radius: 32px;
+
+    text-align: center;
+    text-justify: center;
+    font: normal normal normal 30px/30px Segoe UI;
+    letter-spacing: 0px;
+    color: #000000;
+}
