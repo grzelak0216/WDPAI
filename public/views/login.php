@@ -52,13 +52,22 @@
                     <output> For You</output>
                 </div>
             </div>
-            
-            
+             
             <div class="login-container">
-                <form>
+                <form class="login" action="login" method="POST">
+                    <output> Podaj adres e-mail i hasło </output>
                     <input name="email" type="text" placeholder="E-mail">
                     <input name="password" type="password" placeholder="Hasło">
-                    <button class="button">Kontynuuj</button>
+                    <div class="messages">
+                        <?php
+                            if(isset($messages)){
+                                foreach($messages as $message) {
+                                    echo $message;
+                                }
+                            }
+                        ?>
+                    </div>
+                    <button class="button" type="submit">Kontynuuj</button>
                 </form>
             </div>
         </div>
