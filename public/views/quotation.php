@@ -47,10 +47,6 @@
             <div class="container">
                 <ul class="quotation_form">
                     <li>
-                        <i class="fas fa-luggage-cart"> Typ:</i>
-                        <input name="type" type="text">
-                    </li>
-                    <li>
                         <i class="fas fa-arrows-h"> Szerokość:</i>
                         <input name="width" type="text">
                     </li>

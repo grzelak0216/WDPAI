@@ -44,30 +44,24 @@
         </div>
 
         <div class="container">
-            <div class="user_form">
+            <form class="user_form" action="registration" method="POST">
                 <output>Uzupełnij dane</output>
-                <input name="email" type="text" placeholder="E-mail:">
+                <input name="email" type="text" placeholder="E-mail">
                 <input name="password" type="password" placeholder="Hasło">
-                <input name="re-password" type="password" placeholder="Powtórz hasło">
+                <input name="rePassword" type="password" placeholder="Powtórz hasło">
                 <input name="name" type="text" placeholder="Imie">
-                <input name="Surname" type="text" placeholder="Nazwisko">
-                <input name="account_type" type="text" placeholder="Typ konta">
-            </div>
-    
-            <div class="car_form">
-                <output>Dane pojazdu</output>
-                <div>
-                    <input name="brand" type="text" placeholder="Marka:">
-                    <input name="model" type="text" placeholder="Model:">
-                    <input name="type" type="text" placeholder="Typ:">
-                    <input name="year" type="text" placeholder="Rok produkcji:">
-                    <input name="color" type="text" placeholder="Kolor:">
-                    <input name="generation" type="text" placeholder="Generacja:">
-                    <input name="registration_number" type="text" placeholder="Numer rejestracyjny:">
-                    <input name="combustion" type="text" placeholder="Średnie spalanie:">
-                </div>  
-            </div>
-    
+                <input name="surname" type="text" placeholder="Nazwisko">
+                <div class="messages">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+            </form>
+
             <div class="web_slogan">
                 <div class="logo">
                     <img src="public/img/logo.svg">
@@ -78,11 +72,11 @@
                 </div>
             </div>
     
-            <div class="statute_form">
+            <form class="statute_form" action="registration" method="POST">
                 <output>Regulamin1</output>
                 <output>Regulamin2</output>
-                <button class="button">Zatwierdź</button>
-            </div>
+                <button class="button" type="submit">Zatwierdź</button>
+            </form>
         </div>
         
         <div class = "lower_bar">

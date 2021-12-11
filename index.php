@@ -9,6 +9,7 @@ Router::get('', 'DefaultController');
 Router::get('login', 'DefaultController');
 Router::post('login', 'SecurityController');
 Router::get('registration', 'DefaultController');
+Router::post('registration', 'SecurityController');
 Router::get('profile_notice', 'DefaultController');
 Router::get('quotation', 'DefaultController');
 Router::get('courier_notice', 'DefaultController');
