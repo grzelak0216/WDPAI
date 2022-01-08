@@ -1,8 +1,6 @@
 .vscode
 .idea
 public/uploads/
-config.php
-src/repository
-Database.php
 src/controllers/SecurityController.php
-docker
+src/repository/CourierRepository.php
+src/repository/TransportRepository.php
