@@ -24,7 +24,7 @@ body {
     width: 35vw;
     text-align: center;
     font: normal normal normal 100px/100px Javanese Text;
-    letter-spacing: NaNpx;
+    letter-spacing: normal;
     color: #0810FF;
 }
 

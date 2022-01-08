@@ -2,19 +2,32 @@
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/User.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController {
 
-    public function login()
-    {   
-        $user = new User('jsnow@pk.edu.pl', 'admin', 'Johnny', 'Snow');
+    private $userRepository;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userRepository = new UserRepository();
+    }
+
+    public function login()
+    {
         if (!$this->isPost()) {
             return $this->render('login');
         }
 
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
+
+        $user = $this->userRepository->getUser($email);
+
+        if (!$user) {
+            return $this->render('login', ['messages' => ['User not found!']]);
+        }
 
         if ($user->getEmail() !== $email) {
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
@@ -30,66 +43,29 @@ class SecurityController extends AppController {
 
     public function registration()
     {
-        $user = new User('jsnow@pk.edu.pl', 'admin', 'Johnny', 'Snow');
-
         if (!$this->isPost()) {
             return $this->render('registration');
         }
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $rePassword = $_POST['rePassword'];
+        $confirmedPassword = $_POST['confirmedPassword'];
         $name = $_POST['name'];
         $surname = $_POST['surname'];
+        $phone = $_POST['phone'];
 
-        if(empty($email) or empty($password) or empty($rePassword) or empty($name) or empty($surname)){
-            return $this->render('registration', ['messages' => ['All fields must be filled in']]);
+        if ($password !== $confirmedPassword) {
+            return $this->render('registration', ['messages' => ['Please provide proper password']]);
         }
 
-        if ($user->getEmail() == $email) {
-            return $this->render('registration', ['messages' => ['User with this email exist!']]);
-        }
+        //TODO try to use better hash function
+        $user = new User($email, md5($password), $name, $surname);
+        $user->setPhone($phone);
 
-        if ($rePassword !== $password) {
-            return $this->render('registration', ['messages' => ['Wrong password!']]);
-        }
+        $this->userRepository->addUser($user);
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/");
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 
 
-    public function quotation()
-    {
-        if (!$this->isPost()) {
-            return $this->render('quotation');
-        }
-
-        $width = $_POST['width'];
-        $height = $_POST['height'];
-        $depth = $_POST['depth'];
-        $route = $_POST['route'];
-        $price = 0;
-
-        if(empty($width) or $width <= 0){
-            return $this->render('quotation', ['messages' => ['Wrong value of width']]);
-        }
-
-        if(empty($height) or $height <= 0){
-            return $this->render('quotation', ['messages' => ['Wrong value of height']]);
-        }
-
-        if(empty($depth) or $depth <= 0){
-            return $this->render('quotation', ['messages' => ['Wrong value of depth']]);
-        }
-
-        if(empty($route) or $route <= 0){
-            return $this->render('quotation', ['messages' => ['Wrong value of route']]);
-        }
-
-        $price = ($width * $height * $depth) / 1000 * ($route / 100);
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/");
-    }
 }

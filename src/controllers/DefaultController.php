@@ -9,39 +9,33 @@ class DefaultController extends AppController {
         $this->render('start');
     }
 
-    public function login()
-    {
-        $this->render('login');
-    }
-
-    public function registration()
-    {
-        $this->render('registration');
-    }
-
     public function profile_notice()
     {
         $this->render('profile_notice');
     }
 
-    public function quotation() 
+    public function quotation()
     {
         $this->render('quotation');
     }
 
-    public function courier_notice() 
+    public function info_transport_notice()
     {
-        $this->render('courier_notice');
+        $this->render('info_transport_notice');
     }
 
-    public function reservations() 
+    public function info_courier_notice()
     {
-        $this->render('reservations');
+        $this->render('info_courier_notice');
     }
 
-    public function transport_notice() 
+    public function transport_notice()
     {
         $this->render('transport_notice');
     }
-    
+
+    public function courier_notice()
+    {
+        $this->render('courier_notice');
+    }
 }

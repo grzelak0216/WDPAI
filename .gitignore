@@ -1,0 +1,8 @@
+.vscode
+.idea
+public/uploads/
+config.php
+src/repository
+Database.php
+src/controllers/SecurityController.php
+docker

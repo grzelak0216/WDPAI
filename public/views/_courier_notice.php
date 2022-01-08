@@ -55,24 +55,26 @@
             </div>
     
             <section class="orders">
-                <div id="orders-1">
-                    <img src="public/img/tmp_items.svg">
-                    <div class="order-info">
-                        <h2>
-                            <img src="public/img/tmp_user.svg">
-                            <output>Imie</output>
-                            <output>Nazwisko</output>
-                        </h2>
-                        <i class="fas fa-city"> Miasto:</i>
-                        <i class="fas fa-luggage-cart"> Typ:</i>
-                        <i class="fas fa-coins"> Zapłata:</i>
-                        <i class="fas fa-route"> Trasa: +</i>
+                <?php foreach($items as $item): ?>
+                    <div id="orders-1">
+                        <img src="public/uploads/<?= $item->getFile(); ?>">
+                        <div class="order-info">
+                            <h2>
+                                <img src="public/img/tmp_user.svg">
+                                <output>Imie</output>
+                                <output>Nazwisko</output>
+                            </h2>
+                            <i class="fas fa-city"> Miasto: <?= $item->getStartCity(); ?></i>
+                            <i class="fas fa-luggage-cart"> Typ: <?= $item->getType(); ?></i>
+                            <i class="fas fa-coins"> Zapłata: <?= $item->getPayment(); ?></i>
+                            <i class="fas fa-route"> Trasa: +</i>
+                        </div>
+                        <button class="button">Dodaj</button>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </section>  
     
             <div class="buttons">
-                <button class="button">Dodaj</button>
                 <button class="button">Zatwierdź</button>
             </div>
         </div>
