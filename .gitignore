@@ -2,3 +2,4 @@
 .idea
 config.php
 public/uploads/
+src/controllers/SecurityController.php

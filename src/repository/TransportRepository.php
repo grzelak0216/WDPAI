@@ -21,12 +21,12 @@ class TransportRepository extends Repository
         }
 
         return new Item(
-            $item['startCity'],
-            $item['startStreet'],
-            $item['startNumber'],
-            $item['endCity'],
-            $item['endStreet'],
-            $item['endNumber'],
+            $item['start_city'],
+            $item['start_street'],
+            $item['start_number'],
+            $item['end_city'],
+            $item['end_street'],
+            $item['end_number'],
             $item['width'],
             $item['height'],
             $item['depth'],
@@ -35,21 +35,20 @@ class TransportRepository extends Repository
             $item['payment'],
             $item['time'],
             $item['passengers'],
-            $item['file'],
+            $item['image'],
             $item['description']
             );
     }
 
-    public function add_transport_notice(Item $item): void
+    public function addTransportNotice(Item $item): void
     {
-        $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO transport_notices (start_city, start_street, start_number, end_city, end_street, end_number, width, name, type, payment, time, passengers, description, ID_creator, height, depth, image)
+            INSERT INTO transport_notices (start_city, start_street, start_number, end_city, end_street, end_number, width, name, type, payment, time, passengers, description, "ID_creator", height, depth, image)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
         //TODO you should get this value from logged user session
-        $assignedById = 1;
+        $assignedById = 3;
 
         $stmt->execute([
             $item->getStartCity(),
@@ -62,7 +61,7 @@ class TransportRepository extends Repository
             $item->getName(),
             $item->getType(),
             $item->getPayment(),
-            $date->format('Y-m-d'),
+            $item->getTime(),
             $item->getPassengers(),
             $item->getDescription(),
             $assignedById,
@@ -84,12 +83,12 @@ class TransportRepository extends Repository
 
         foreach ($items as $item) {
             $result[] = new Item(
-                $item['startCity'],
-                $item['startStreet'],
-                $item['startNumber'],
-                $item['endCity'],
-                $item['endStreet'],
-                $item['endNumber'],
+                $item['start_city'],
+                $item['start_street'],
+                $item['start_number'],
+                $item['end_city'],
+                $item['end_street'],
+                $item['end_number'],
                 $item['width'],
                 $item['height'],
                 $item['depth'],
@@ -98,7 +97,7 @@ class TransportRepository extends Repository
                 $item['payment'],
                 $item['time'],
                 $item['passengers'],
-                $item['file'],
+                $item['image'],
                 $item['description']
             );
         }

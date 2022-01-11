@@ -120,7 +120,7 @@ class Item {
         return $this->payment;
     }
 
-    public function getTime(): \Cassandra\Date
+    public function getTime(): string
     {
         return $this->time;
     }

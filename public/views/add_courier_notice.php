@@ -44,25 +44,23 @@
     </div>
 
     <div class="container">
-        <form action="add_courier_notice" class="data" method="post" ENCTYPE="multipart/form-data">
+        <form action="addCourierNotice" class="data" method="post" ENCTYPE="multipart/form-data">
             <h1>Wprowadz dane</h1>
             <div class="startCity">
                 <i class="fas fa-box"></i>
                 <input name="startCity" type="text" placeholder="Miasto poczatkowe">
                 <input name="startStreet" type="text" placeholder="Nazwa ulicy">
-                <input name="startNumber" type="text" placeholder="Numer lokalu">
             </div>
 
             <div class="endCityName">
                 <i class="fas fa-box"></i>
                 <input name="endCity" type="text" placeholder="Miasto Koncowe">
                 <input name="endStreet" type="text" placeholder="Nazwa ulicy">
-                <input name="endNumber" type="text" placeholder="Numer lokalu">
             </div>
 
             <div class="date">
                 <i class="fas fa-hourglass-half"></i>
-                <input name="date" type="date" placeholder="Data">
+                <input name="deadline" type="date" placeholder="Data">
             </div>
 
             <div class="car">
@@ -80,13 +78,13 @@
                 </div>
                 <div class="registration">
                     <i class="fas fa-hourglass-half"></i>
-                    <input name="registration" type="number" placeholder="Rejestracja">
+                    <input name="registration" type="text" placeholder="Rejestracja">
                 </div>
             </div>
 
             <div class="maxExtraRoad">
                 <i class="fas fa-box"></i>
-                <input name="maxExtraRoad" type="number" placeholder="Maksymalna dodatkowa tarasa">
+                <input name="extraRoad" type="number" placeholder="Maksymalna dodatkowa tarasa">
             </div>
 
             <div class="maxSize">
@@ -109,6 +107,10 @@
                 ?>
             </div>
 
+            <div class="buttons">
+                <button type="reset" class="button">Reset</button>
+                <button type="submit" class="button">Kontynuuj</button>
+            </div>
         </form>
 
         <div class="web_slogan">
@@ -121,10 +123,6 @@
             </div>
         </div>
 
-        <div class="buttons">
-            <button type="reset" class="button">Reset</button>
-            <button type="submit" class="button">Kontynuuj</button>
-        </div>
     </div>
 
     <div class = "lower_bar">

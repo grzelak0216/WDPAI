@@ -14,37 +14,37 @@ class CourierRepository extends Repository
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        $item = $stmt->fetch(PDO::FETCH_ASSOC);
+        $courier = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($item == false) {
+        if ($courier == false) {
             return null;
         }
 
         return new Courier(
-            $_POST['startCity'],
-            $_POST['startStreet'],
-            $_POST['endCity'],
-            $_POST['endStreet'],
-            $_POST['extraRoad'],
-            $_POST['maxSize'],
-            $_POST['description'],
-            $_POST['deadline'],
-            $_POST['brand'],
-            $_POST['model'],
-            $_POST['year'],
-            $_POST['registration']
+            $courier['start_city'],
+            $courier['start_street'],
+            $courier['end_city'],
+            $courier['end_street'],
+            $courier['extra_road'],
+            $courier['max_size'],
+            $courier['description'],
+            $courier['date'],
+            $courier['car_brand'],
+            $courier['car_model'],
+            $courier['car_year'],
+            $courier['car_registration'],
         );
     }
 
-    public function add_courier_notice(Courier $courier): void
+    public function addCourierNotice(Courier $courier): void
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO transport_notices (start_city, start_street, end_city, end_street, extra_road, max_size, creator, car_brand, date, car_model, car_yera, car_registration)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO courier_notices (start_city, start_street, end_city, end_street, extra_road, max_size, "ID_creator", date, car_brand, car_model, car_year, car_registration, description)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
         //TODO you should get this value from logged user session
-        $assignedById = 1;
+        $assignedById = 3;
 
         $stmt->execute([
             $courier->getStartCity(),
@@ -58,7 +58,38 @@ class CourierRepository extends Repository
             $courier->getBrand(),
             $courier->getModel(),
             $courier->getYear(),
-            $courier->getRegistration()
+            $courier->getRegistration().
+            $courier->getDescription()
         ]);
+    }
+
+    public function getCourierNotices(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM courier_notices;
+        ');
+        $stmt->execute();
+        $couriers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($couriers as $courier) {
+            $result[] = new Courier(
+                $courier['start_city'],
+                $courier['start_street'],
+                $courier['end_city'],
+                $courier['end_street'],
+                $courier['extra_road'],
+                $courier['max_size'],
+                $courier['description'],
+                $courier['date'],
+                $courier['car_brand'],
+                $courier['car_model'],
+                $courier['car_year'],
+                $courier['car_registration'],
+            );
+        }
+
+        return $result;
     }
 }

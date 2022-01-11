@@ -19,6 +19,12 @@ class TransportController extends AppController {
         $this->transportRepository = new TransportRepository();
     }
 
+    public function transport_notice()
+    {
+        $items = $this->transportRepository->getTransportNotices();
+        $this->render('transport_notice', ['items' => $items]);
+    }
+
     public function addTransportNotice()
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -49,8 +55,8 @@ class TransportController extends AppController {
             $this->transportRepository->addTransportNotice($item);
 
             return $this->render('transport_notice', [
-                'transport_notice' => $this->transportRepository->getTransportNotices(),
-                'messages' => $this->message
+                'messages' => $this->message,
+                'transport_notice' => $this->transportRepository->getTransportNotices()
             ]);
         }
         return $this->render('add_transport_notice', ['messages' => $this->message]);

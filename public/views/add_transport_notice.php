@@ -43,9 +43,9 @@
     <div class="break_bars">
     </div>
 
-    <form class="container">
+    <div class="container">
         
-        <form action="add_transport_notice" class="data" method="post" ENCTYPE="multipart/form-data">
+        <form action="addTransportNotice" method="POST" ENCTYPE="multipart/form-data">
             <h1>Wprowadz dane </h1>
             <div class="startCity">
                 <i class="fas fa-box"></i>
@@ -98,7 +98,7 @@
                 <input name="passengers" type="number" placeholder="Pasażerowie">
             </div>
 
-            <input type="file" name="file">
+            <input type="file" name="file"/><br/>
 
             <div class="description">
                 <i class="fas fa-file-alt"></i>
@@ -114,7 +114,8 @@
                 }
                 ?>
             </div>
-            <div class="buttons">
+
+            <div class="buttons" >
                 <button type="reset" class="button">Reset</button>
                 <button type="submit" class="button">Kontynuuj</button>
             </div>

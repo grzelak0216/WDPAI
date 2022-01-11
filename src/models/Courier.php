@@ -1,10 +1,6 @@
 <?php
 
-use Cassandra\Date;
-
 class Courier {
-
-
     private $startCity;
     private $startStreet;
 
@@ -49,7 +45,7 @@ class Courier {
         $this->registration = $registration;
     }
 
-    public function setDeadline(date $deadline)
+    public function setDeadline(Date $deadline)
     {
         $this->deadline = $deadline;
     }
@@ -110,7 +106,7 @@ class Courier {
     }
 
 
-    public function getDeadline(): date
+    public function getDeadline(): string
     {
         return $this->deadline;
     }
@@ -155,12 +151,12 @@ class Courier {
         return $this->endStreet;
     }
 
-    public function getExtraRoad(): float
+    public function getExtraRoad(): int
     {
         return $this->extraRoad;
     }
 
-    public function getMaxSize(): float
+    public function getMaxSize(): int
     {
         return $this->maxSize;
     }

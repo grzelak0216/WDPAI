@@ -15,17 +15,16 @@ class CourierController extends AppController {
         $this->courierRepository = new CourierRepository();
     }
 
-    public function courierNotice()
+    public function courier_notice()
     {
-        $projects = $this->courierRepository->getProjects();
-        $this->render('courier_notice', ['projects' => $projects]);
+        $couriers = $this->courierRepository->getCourierNotices();
+        $this->render('courier_notice', ['couriers' => $couriers]);
     }
+
 
     public function addCourierNotice()
     {
-        if ($this->isPost() && $this->correct()) {
-
-
+        if ($this->isPost()) {
             // TODO create new project object and save it in database
             $courier = new Courier(
                 $_POST['startCity'],
@@ -44,17 +43,11 @@ class CourierController extends AppController {
 
             $this->courierRepository->addCourierNotice($courier);
 
-            return $this->render('courier_notice', ['messages' => $this->message]);
+            return $this->render('courier_notice', [
+                'messages' => $this->message,
+                'courier_notice' => $this->courierRepository->getCourierNotices()
+            ]);
         }
         return $this->render('add_courier_notice', ['messages' => $this->message]);
-    }
-
-    private function correct(): bool
-    {
-        if (false) {
-            $this->message[] = 'File type is not supported.';
-            return false;
-        }
-        return true;
     }
 }

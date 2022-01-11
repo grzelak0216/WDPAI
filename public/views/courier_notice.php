@@ -45,7 +45,7 @@
 
         <div class="container">
             <div class="route_info">
-                <output>Twoje zaakceptowane ogłoszenia:</output>
+                <output>ogłoszenia:</output>
                 <div class="route">
                     <output>Trasa:</output>
                     <output>Miasto1</output>
@@ -55,27 +55,31 @@
             </div>
     
             <section class="orders">
-                <?php foreach($items as $item): ?>
+                <?php foreach($couriers as $courier): ?>
                     <div id="orders-1">
-                        <img src="public/uploads/<?= $item->getFile(); ?>">
+                        <div class="route">
+                            <i class="fas fa-city"><?= $courier->getStartCity();?></i>
+                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-city"><?= $courier->getEndCity();?></i>
+                        </div>
+                        <i class="fas fa-city"> Data: <?= $courier->getDeadline(); ?></i>
                         <div class="order-info">
+                            <i class="fas fa-luggage-cart"> Maksymalny rozmiar: <?= $courier->getMaxSize(); ?></i>
+                            <i class="fas fa-coins"> Dodatkowa trasa: <?= $courier->getExtraRoad(); ?></i>
+                            <i class="fas fa-route"> Auto: <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?></i>
                             <h2>
                                 <img src="public/img/tmp_user.svg">
                                 <output>Imie</output>
                                 <output>Nazwisko</output>
                             </h2>
-                            <i class="fas fa-city"> Miasto: <?= $item->getStartCity(); ?></i>
-                            <i class="fas fa-luggage-cart"> Typ: <?= $item->getType(); ?></i>
-                            <i class="fas fa-coins"> Zapłata: <?= $item->getPayment(); ?></i>
-                            <i class="fas fa-route"> Trasa: +</i>
                         </div>
-                        <button class="button">Dodaj</button>
+                        <button class="button">Sprawdź</button>
                     </div>
                 <?php endforeach; ?>
             </section>  
     
             <div class="buttons">
-                <button class="button">Zatwierdź</button>
+                <button class="button">Powrót</button>
             </div>
         </div>
         

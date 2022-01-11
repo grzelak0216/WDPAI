@@ -48,9 +48,10 @@
                 <output>Uzupełnij dane</output>
                 <input name="email" type="text" placeholder="E-mail">
                 <input name="password" type="password" placeholder="Hasło">
-                <input name="rePassword" type="password" placeholder="Powtórz hasło">
+                <input name="confirmedPassword" type="password" placeholder="Powtórz hasło">
                 <input name="name" type="text" placeholder="Imie">
                 <input name="surname" type="text" placeholder="Nazwisko">
+                <input name="phone" type="text" placeholder="Numer Telefonu">
                 <div class="messages">
                     <?php
                     if(isset($messages)){
@@ -60,6 +61,7 @@
                     }
                     ?>
                 </div>
+                <button class="button" type="submit">Zatwierdź</button>
             </form>
 
             <div class="web_slogan">
@@ -75,7 +77,7 @@
             <form class="statute_form" action="registration" method="POST">
                 <output>Regulamin1</output>
                 <output>Regulamin2</output>
-                <button class="button" type="submit">Zatwierdź</button>
+
             </form>
         </div>
         

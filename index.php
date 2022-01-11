@@ -10,8 +10,9 @@ Router::get('profile_notice', 'DefaultController');
 Router::get('quotation', 'DefaultController');
 Router::get('info_transport_notice', 'DefaultController');
 Router::get('info_courier_notice', 'DefaultController');
-Router::get('transport_notice', 'DefaultController');
-Router::get('courier_notice', 'DefaultController');
+
+Router::get('transport_notice', 'TransportController');
+Router::get('courier_notice', 'CourierController');
 
 Router::post('addTransportNotice', 'TransportController');
 Router::post('addCourierNotice', 'CourierController');

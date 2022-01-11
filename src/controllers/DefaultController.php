@@ -29,13 +29,4 @@ class DefaultController extends AppController {
         $this->render('info_courier_notice');
     }
 
-    public function transport_notice()
-    {
-        $this->render('transport_notice');
-    }
-
-    public function courier_notice()
-    {
-        $this->render('courier_notice');
-    }
 }

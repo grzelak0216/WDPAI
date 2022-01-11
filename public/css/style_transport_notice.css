@@ -28,65 +28,29 @@ section {
     
 }
 
-.orders>div>div>h2>img {
-    height: 6vh;
-    border-radius: 5vh;
+.orders-1>div>img {
+    height: 50%;
+    width: 100%;
     object-fit: cover;
+    border-radius: 1em 1em 0 0;
 }
 
-.orders>div>div>h2{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
-    padding-left: 1em;
-    column-gap: 0.5em;
-    font-size: 1.5em;
-}
-
-.orders>div>div {
-    height: 75%;
-    margin: 0.5em;
-    color: #000000;
+.orders-1>div>div {
+    height: 50%;
+    margin: 1em;
+    color: #2699FB;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    row-gap: 1vh;
 }
 
-.orders>div>div>i{
-    width: 80%;
-    height: 15%;
-    background-color: #ffffff;
-    border: 1px solid gray;
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    align-self: center;
-    align-items: center;
-    column-gap: 1vh;
-    padding-left: 0.5em;
-}
-
-.orders>div {
+.orders-1>div {
     border: 1px solid gray;
     border-radius: 1em 1em 0 0;
-    height: 470px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    justify-self: center;
-    align-self: center;
-    background: #ffffd5f5 0% 0% no-repeat padding-box; 
-}
-
-.orders > div > img{
-    height: 50%;
-    width: 100%;
-    
-    object-fit: cover;
-    border-radius: 1em 1em 0 0;
 }
 
 .container > .buttons{

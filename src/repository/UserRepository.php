@@ -32,7 +32,7 @@ class UserRepository extends Repository
     public function addUser(User $user)
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_details (name, surname, phone)
+            INSERT INTO users_details (name, surname, phone_number)
             VALUES (?, ?, ?)
         ');
 
@@ -43,21 +43,21 @@ class UserRepository extends Repository
         ]);
 
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users (email, password, id_user_details)
+            INSERT INTO users ("ID_users_details", email, password)
             VALUES (?, ?, ?)
         ');
 
         $stmt->execute([
+            $this->getUserDetailsId($user),
             $user->getEmail(),
-            $user->getPassword(),
-            $this->getUserDetailsId($user)
+            $user->getPassword()
         ]);
     }
 
     public function getUserDetailsId(User $user): int
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users_details WHERE name = :name AND surname = :surname AND phone = :phone
+            SELECT * FROM public.users_details WHERE name = :name AND surname = :surname AND phone_number = :phone
         ');
         $stmt->bindParam(':name', $user->getName(), PDO::PARAM_STR);
         $stmt->bindParam(':surname', $user->getSurname(), PDO::PARAM_STR);
@@ -65,6 +65,6 @@ class UserRepository extends Repository
         $stmt->execute();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $data['id'];
+        return $data['ID_users_details'];
     }
 }
