@@ -58,7 +58,7 @@ class CourierRepository extends Repository
             $courier->getBrand(),
             $courier->getModel(),
             $courier->getYear(),
-            $courier->getRegistration().
+            $courier->getRegistration(),
             $courier->getDescription()
         ]);
     }

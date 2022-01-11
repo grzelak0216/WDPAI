@@ -44,7 +44,7 @@
     </div>
 
     <div class="container">
-        
+
         <form action="addTransportNotice" method="POST" ENCTYPE="multipart/form-data">
             <h1>Wprowadz dane </h1>
             <div class="startCity">
@@ -80,7 +80,7 @@
                     <input name="depth" type="number" placeholder="Glebokosc">
                 </div>
             </div>
-            
+
             <div class="type">
                 <i class="fas fa-luggage-cart"></i>
                 <input name="type" type="text" placeholder="Typ">

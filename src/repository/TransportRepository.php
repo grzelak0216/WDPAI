@@ -37,7 +37,7 @@ class TransportRepository extends Repository
             $item['passengers'],
             $item['image'],
             $item['description']
-            );
+        );
     }
 
     public function addTransportNotice(Item $item): void

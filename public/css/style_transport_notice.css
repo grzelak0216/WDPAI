@@ -25,7 +25,7 @@ section {
     grid-gap: 2em;
     padding: 0.5em;
     overflow: auto;
-    
+
 }
 
 .orders-1>div>img {
@@ -61,14 +61,14 @@ section {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    
+
     align-content: center;
     column-gap: 4vw;
 }
 
 .container > .buttons > button{
     width: 12vw;
-    
+
     background: #F7F767 0% 0% no-repeat padding-box;
     border: 1px solid #F8F817;
     border-radius: 32px;

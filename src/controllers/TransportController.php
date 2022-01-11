@@ -56,7 +56,7 @@ class TransportController extends AppController {
 
             return $this->render('transport_notice', [
                 'messages' => $this->message,
-                'transport_notice' => $this->transportRepository->getTransportNotices()
+                'items' => $this->transportRepository->getTransportNotices()
             ]);
         }
         return $this->render('add_transport_notice', ['messages' => $this->message]);

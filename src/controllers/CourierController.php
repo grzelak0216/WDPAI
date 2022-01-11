@@ -45,7 +45,7 @@ class CourierController extends AppController {
 
             return $this->render('courier_notice', [
                 'messages' => $this->message,
-                'courier_notice' => $this->courierRepository->getCourierNotices()
+                'couriers' => $this->courierRepository->getCourierNotices()
             ]);
         }
         return $this->render('add_courier_notice', ['messages' => $this->message]);
