@@ -104,4 +104,32 @@ class TransportRepository extends Repository
 
         return $result;
     }
+
+    public function getProjectByCities(string $startCity, string $endCity)
+    {
+        $startCity = strtolower($startCity);
+        $endCity = strtolower($endCity);
+
+        if ($startCity == null || $endCity == null){
+            if ($startCity == null){
+                $stmt = $this->database->connect()->prepare('
+                    SELECT * FROM transport_notices WHERE LOWER(end_city) LIKE :search
+                ');
+                $stmt->bindParam(':search', $endCity, PDO::PARAM_STR);
+            } else {
+                $stmt = $this->database->connect()->prepare('
+                    SELECT * FROM transport_notices WHERE LOWER(start_city) LIKE :search
+                ');
+                $stmt->bindParam(':search', $startCity, PDO::PARAM_STR);
+            }
+            $stmt->execute();
+        } else {
+            $stmt = $this->database->connect()->prepare('
+                SELECT * FROM transport_notices WHERE LOWER(start_city) = ? AND LOWER(end_city) = ?
+            ');
+            $stmt->execute(array($startCity, $endCity));
+        }
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

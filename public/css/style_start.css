@@ -2,11 +2,9 @@ body {
     margin: 0;
 }
 
-
-
 .container {
     width: 100vw;
-    height: 84vh;
+    height: 85vh;
     background: #D7E1FC 0% 0% no-repeat padding-box;
 
     display: flex;
@@ -40,7 +38,7 @@ body {
 
 .input_bars{
     width: 95vw;
-    height: 13vh;
+    height: 10vh;
     
     background: #FAFA03F5 0% 0% no-repeat padding-box;
     box-shadow: inset 3px 3px 3px #2A01FF29, 3px 3px 3px #2A01FF29;

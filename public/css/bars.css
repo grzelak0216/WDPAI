@@ -10,6 +10,7 @@
 
 .base-container > header{
     /*width: 100vw - 2px;*/
+    position: relative;
     width: 100vw;
     background: transparent linear-gradient(180deg, #FCEB0A 0%, #FCF270 100%) 0% 0% no-repeat padding-box;
     border-bottom: 1px solid #707070;
@@ -18,6 +19,10 @@
     flex-direction: row;
     grid-gap: 2vw;
     align-items: center;
+}
+
+body {
+    margin: 0;
 }
 
 li i {
@@ -129,5 +134,22 @@ a {
     justify-content: space-around;
     align-items: center;
 
+}
+
+#burger {
+    cursor: pointer;
+}
+
+.option-container {
+    display: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+.option-container.active {
+    display: block;
 }
 

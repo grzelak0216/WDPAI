@@ -29,6 +29,10 @@ body {
     border-radius: 5px;
 }
 
+.container > h1{
+    padding-left: 1em;
+}
+
 section{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -45,17 +49,28 @@ section{
     flex-direction: column;
 }
 
-#orders-1 > .order{
-    padding-left: 1em;
+#orders-1>.route{
+    font-size: 2em;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+
+    column-gap: 0.5em;
 }
 
-#orders-1 > h2{
-    padding: 0;
+#orders-1>.order-info{
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
     margin: 0;
+    padding-left: 1em;
+    row-gap: 0.5em;
 }
 
-.container > h1{
+#orders-1>.order-info > h2{
     padding-left: 1em;
+    margin: 0;
 }
 
 #orders-1>img{

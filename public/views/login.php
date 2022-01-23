@@ -55,7 +55,7 @@
              
             <div class="login-container">
                 <form class="login" action="login" method="POST">
-                    <output> Podaj adres e-mail i hasło </output>
+                    <h1> Podaj adres e-mail i hasło </h1>
                     <input name="email" type="text" placeholder="E-mail">
                     <input name="password" type="password" placeholder="Hasło">
                     <div class="messages">

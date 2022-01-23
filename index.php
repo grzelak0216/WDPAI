@@ -14,6 +14,8 @@ Router::get('info_courier_notice', 'DefaultController');
 Router::get('transport_notice', 'TransportController');
 Router::get('courier_notice', 'CourierController');
 
+Router::post('search', 'TransportController');
+
 Router::post('addTransportNotice', 'TransportController');
 Router::post('addCourierNotice', 'CourierController');
 Router::post('login', 'SecurityController');

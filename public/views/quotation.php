@@ -7,6 +7,7 @@
     <link rel="stylesheet" type = "text/css" href = "public/css/style_quotation.css">
     <link rel="stylesheet" type = "text/css" href = "public/css/bars.css">
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/quotation.js" defer></script>
     <title>PROJECTS</title>
 </head>
 
@@ -34,10 +35,15 @@
                     <i class="fas fa-user-circle"></i>
                 </li>
                 <li>
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars" id="burger"></i>
                 </li>
             </ul>
-        
+            <div class="option-container">
+                <ul>
+                    <li>Dupa</li>
+                    <li>Dupa</li>
+                </ul>
+            </div>
         </header>
 
         <div class="break_bars">
@@ -47,23 +53,32 @@
             <div class="container">
                 <ul class="quotation_form">
                     <li>
-                        <i class="fas fa-arrows-h"> Szerokość:</i>
-                        <input name="width" type="text">
+                        <i class="fas fa-arrows"></i>
+                        <input name="width" type="number" min="1" placeholder="Szerokość:">
                     </li>
                     <li>
-                        <i class="fas fa-arrows-v"> Wysokość:</i>
-                        <input name="height" type="text">
+                        <i class="fas fa-arrows-v"></i>
+                        <input name="height" type="number" min="1" placeholder="Wysokość:">
                     </li>
                     <li>
-                        <i class="fas fa-expand-alt"> Głębokość</i>
-                        <input name="depth" type="text">
+                        <i class="fas fa-expand-alt"></i>
+                        <input name="depth" type="number" min="1" placeholder="Głębokość:">
                     </li>
                     <li>
-                        <i class="fas fa-route"> Długość trasy:</i>
-                        <input name="route" type="text">
+                        <i class="fas fa-route"></i>
+                        <input name="route" type="number" min="1" placeholder="Długość trasy">
                     </li>
-                </ul>   
-                   
+                </ul>
+
+                <div class="result">
+                    <div class="price">
+                        <i class="fas fa-coins"></i>
+                        <output>Cena:</output>
+                        <output class="output-result">0</output>
+                    </div>
+                    <button class="calculate-button">Oblicz</button>
+                </div>
+
                 <div class="quotation_result">
                     <div class="web_slogan">
                         <div class="logo">
@@ -74,14 +89,8 @@
                             <output> For You</output>
                         </div>
                     </div>
-                    <div class="result">
-                        <div class="price">
-                            <i class="fas fa-coins"></i>
-                            <output>Cena:</output>
-                            <output>LICZBA</output>
-                        </div>
-                        <button class="button">Kontynuuj</button>
-                    </div>
+
+                    <button class="button">Kontynuuj</button>
                 </div>
             </div>
         </body>

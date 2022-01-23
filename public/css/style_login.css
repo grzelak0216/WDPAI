@@ -4,7 +4,7 @@ body {
 
 .container {
     width: 100vw;
-    height: 84vh;
+    height: 85vh;
     background: transparent linear-gradient(180deg, #FDEB00F5 0%, #FAF7CA 28%, #FAF7CA 100%, #808080 100%) 0% 0% no-repeat padding-box;
 
     display: flex;
