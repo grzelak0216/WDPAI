@@ -21,6 +21,8 @@ class Item {
     private $passengers;
     private $file;
     private $description;
+    private $creatorName;
+    private $creatorSurname;
 
 
     public function __construct(
@@ -39,7 +41,10 @@ class Item {
         $time,
         $passengers,
         $file,
-        $description)
+        $description,
+        $creatorName,
+        $creatorSurname)
+
     {
         $this->startCity = $startCity;
         $this->startStreet = $startStreet;
@@ -57,6 +62,8 @@ class Item {
         $this->passengers = $passengers;
         $this->file = $file;
         $this->description = $description;
+        $this->creatorName = $creatorName;
+        $this->creatorSurname = $creatorSurname;
     }
 
 
@@ -140,7 +147,15 @@ class Item {
         return $this->description;
     }
 
+    public function getCreatorName(): string
+    {
+        return $this->creatorName;
+    }
 
+    public function getCreatorSurname(): string
+    {
+        return $this->creatorSurname;
+    }
 
     public function setStartCity(string $startCity)
     {

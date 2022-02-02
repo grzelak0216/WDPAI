@@ -37,7 +37,7 @@ section{
     overflow: auto;
 }
 
-#orders-1{
+.courier-single{
     background-color: #FFFFFF;
     border: 1px solid gray;
     border-radius: 1em 1em 0 0;
@@ -45,11 +45,11 @@ section{
     flex-direction: column;
 }
 
-#orders-1 > .order{
+.courier-single > .order{
     padding-left: 1em;
 }
 
-#orders-1 > h2{
+.courier-single > h2{
     padding: 0;
     margin: 0;
 }
@@ -58,7 +58,7 @@ section{
     padding-left: 1em;
 }
 
-#orders-1>img{
+.courier-single>img{
     height: 12em;
     width: 100%;
     object-fit: cover;

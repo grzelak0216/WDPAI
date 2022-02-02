@@ -26,19 +26,29 @@ class SecurityController extends AppController {
         $user = $this->userRepository->getUser($email);
 
         if (!$user) {
+            $this->userRepository->removeUserCookies();
             return $this->render('login', ['messages' => ['User not found!']]);
         }
 
         if ($user->getEmail() !== $email) {
+            $this->userRepository->removeUserCookies();
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
         }
 
         if ($user->getPassword() !== $password) {
+            $this->userRepository->removeUserCookies();
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/");
+        $cookie_name = "userID";
+        $cookie_value = $this->userRepository->getUserID($email);
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 7), "/");
+
+        if(!isset($_COOKIE['userID'])){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+
     }
 
     public function registration()
@@ -67,5 +77,25 @@ class SecurityController extends AppController {
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 
-
+    public function logout()
+    {
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        if (isset($_SERVER['HTTP_COOKIE'])) {
+            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+            foreach ($cookies as $cookie) {
+                $parts = explode('=', $cookie);
+                $name = trim($parts[0]);
+                setcookie($name, '', time() - 42000);
+                setcookie($name, '', time() - 42000, '/');
+            }
+        }
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+    }
 }

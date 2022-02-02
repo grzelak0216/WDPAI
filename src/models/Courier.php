@@ -1,11 +1,12 @@
 <?php
 
 class Courier {
-    private $startCity;
-    private $startStreet;
-
-    private $endCity;
-    private $endStreet;
+    private $startName;
+    private $startAlt;
+    private $startLong;
+    private $endName;
+    private $endAlt;
+    private $endLong;
 
     private $extraRoad;
     private $maxSize;
@@ -16,12 +17,16 @@ class Courier {
     private $model;
     private $year;
     private $registration;
+    private $creatorName;
+    private $creatorSurname;
 
     public function __construct(
-        $startCity,
-        $startStreet,
-        $endCity,
-        $endStreet,
+        $startName,
+        $startAlt,
+        $startLong,
+        $endName,
+        $endAlt,
+        $endLong,
         $extraRoad,
         $maxSize,
         $description,
@@ -29,12 +34,16 @@ class Courier {
         $brand,
         $model,
         $year,
-        $registration)
+        $registration,
+        $creatorName,
+        $creatorSurname)
     {
-        $this->startCity = $startCity;
-        $this->startStreet = $startStreet;
-        $this->endCity = $endCity;
-        $this->endStreet = $endStreet;
+        $this->startName = $startName;
+        $this->startAlt = $startAlt;
+        $this->startLong = $startLong;
+        $this->endName = $endName;
+        $this->endAlt = $endAlt;
+        $this->endLong = $endLong;
         $this->extraRoad = $extraRoad;
         $this->maxSize = $maxSize;
         $this->description = $description;
@@ -43,68 +52,9 @@ class Courier {
         $this->model = $model;
         $this->year = $year;
         $this->registration = $registration;
+        $this->creatorName = $creatorName;
+        $this->creatorSurname = $creatorSurname;
     }
-
-    public function setDeadline(Date $deadline)
-    {
-        $this->deadline = $deadline;
-    }
-
-    public function setBrand(string $brand)
-    {
-        $this->brand = $brand;
-    }
-
-    public function setModel(string $model)
-    {
-        $this->model = $model;
-    }
-
-    public function setYear(string $year)
-    {
-        $this->year = $year;
-    }
-
-    public function setRegistration(string $registration)
-    {
-        $this->registration = $registration;
-    }
-
-    public function setStartCity(string $startCity)
-    {
-        $this->startCity = $startCity;
-    }
-
-    public function setStartStreet(string $startStreet)
-    {
-        $this->startStreet = $startStreet;
-    }
-
-    public function setEndCity(string $endCity)
-    {
-        $this->endCity = $endCity;
-    }
-
-    public function setEndStreet(string $endStreet)
-    {
-        $this->endStreet = $endStreet;
-    }
-
-    public function setExtraRoad(float $extraRoad)
-    {
-        $this->extraRoad = $extraRoad;
-    }
-
-    public function setMaxSize(float $maxSize)
-    {
-        $this->maxSize = $maxSize;
-    }
-
-    public function setDescription(string $description)
-    {
-        $this->description = $description;
-    }
-
 
     public function getDeadline(): string
     {
@@ -131,24 +81,34 @@ class Courier {
         return $this->registration;
     }
 
-    public function getStartCity(): string
+    public function getStartName()
     {
-        return $this->startCity;
+        return $this->startName;
     }
 
-    public function getStartStreet(): string
+    public function getStartAlt()
     {
-        return $this->startStreet;
+        return $this->startAlt;
     }
 
-    public function getEndCity(): string
+    public function getStartLong()
     {
-        return $this->endCity;
+        return $this->startLong;
     }
 
-    public function getEndStreet(): string
+    public function getEndName()
     {
-        return $this->endStreet;
+        return $this->endName;
+    }
+
+    public function getEndAlt()
+    {
+        return $this->endAlt;
+    }
+
+    public function getEndLong()
+    {
+        return $this->endLong;
     }
 
     public function getExtraRoad(): int
@@ -165,4 +125,18 @@ class Courier {
     {
         return $this->description;
     }
+
+    public function getCreatorName(): string
+    {
+        return $this->creatorName;
+    }
+
+    public function getCreatorSurname(): string
+    {
+        return $this->creatorSurname;
+    }
+
+
+
+
 }

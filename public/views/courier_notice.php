@@ -4,141 +4,125 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type = "text/css" href = "public/css/style_courier_notice.css">
-    <link rel="stylesheet" type = "text/css" href = "public/css/bars.css">
+    <title>Courier notice</title>
+    <link rel="stylesheet" type="text/css" href="public/css/bars.css">
+    <link rel="stylesheet" href="public/css/primitive.css">
+    <link rel="stylesheet" type="text/css" href="public/css/styles.css">
+
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
+
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./public/js/search.js" defer></script>
-    <title>PROJECTS</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
 </head>
 
 <body>
-<div class="base-container">
     <header>
-        <div class = "header_logo">
+        <div class="header_logo">
             <img src="public/img/logo.svg">
         </div>
         <ul>
+            <li id="search"><a href="#"><i class="fas fa-search"></i> Szukaj</a></li>
+            <li id="add"><a href="#"><i class="far fa-calendar-plus"></i> Dodaj ogłoszenie</a></li>
+            <li><a href="#"><i class="fas fa-list"></i> Rezerwacje</a></li>
             <li>
-                <i class="fas fa-search"></i>
-                <a herf="#" class = "button">Szukaj</a>
-            </li>
-            <li>
-                <i class="far fa-calendar-plus"></i>
-                <a herf="#" class = "button">Dodaj ogłoszenie</a>
-            </li>
-            <li>
-                <i class="fas fa-list"></i>
-                <a herf="#" class = "button">Rezerwacje</a>
-            </li>
-            <li>
-                <output>Imie</output>
+                <?php
+                $user_array = json_decode($_COOKIE['user'], true);
+                if ($user_array) {
+                    $logUsers = new User($user_array['email'], $user_array['password'], $user_array['name'], $user_array['surname']);
+                    echo $logUsers->getName();
+                }
+                ?>
                 <i class="fas fa-user-circle"></i>
             </li>
-            <li>
-                <i class="fas fa-bars"></i>
-            </li>
+            <li id="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
-
+        <div class="option-container">
+            <ul>
+                <li><a href="http://localhost:8080/profile_notice">Profil</a></li>
+                <li><a href="http://localhost:8080/quantition">Wycena</a></li>
+                <li><a href="http://localhost:8080/logout">Wyloguj</a></li>
+            </ul>
+        </div>
+        <div class="option-search">
+            <ul>
+                <li><a href="http://localhost:8080/courier_notice">Szukaj ogłoszenie kurierskie</a></li>
+                <li><a href="http://localhost:8080/transport_notice">Szukaj ogłoszenie transportu</a></li>
+            </ul>
+        </div>
+        <div class="option-add">
+            <ul>
+                <li><a href="http://localhost:8080/addTransportNotice">Dodaj ogłoszenie kurierskie</a></li>
+                <li><a href="http://localhost:8080/addCourierNotice">Dodaj ogłoszenie transportu</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="break_bars">
-    </div>
-
     <div class="container">
-        <div class="route_search">
-            <h2>Szukaj trasy: </h2>
-            <input name="startCity" type="text" placeholder="Miasto poczatkowe">
-            <i class="fas fa-arrow-right"></i>
-            <input name="endCity" type="text" placeholder="Miasto koncowe">
+        <div class="flex-row">
+            <div class="flex-small">
+                <h1>Ogłoszenia:</h1>
+                <section id="couriers-travels" class="couriers-travels orders2">
+                    <?php $index = 0; ?>
+                    <?php foreach($couriers as $courier): ?>
+                        <div
+                            id="courier-single-<?php echo $index; ?>"
+                            class="courier-single"
+                            data-start-alt="<?php echo $courier->getStartAlt(); ?>"
+                            data-start-long="<?php echo $courier->getStartLong(); ?>"
+                            data-end-alt="<?php echo $courier->getEndAlt(); ?>"
+                            data-end-long="<?php echo $courier->getEndLong(); ?>"
+
+                        >
+                            <div id='map-<?php echo $index; ?>'></div>
+                            <?php $index = $index+1; ?>
+                            <div class="order-info">
+                                <span><i class="fas fa-city"></i> <b>Start:</b> <?= $courier->getStartName();?> <i class="fas fa-arrow-right"></i></span>
+                                <span><i class="fas fa-city"></i> <b>End:</b> <?= $courier->getEndName();?></span>
+                                <span><i class="fas fa-city"></i> <b>Data:</b> <?= $courier->getDeadline(); ?></span>
+                                <span><i class="fas fa-luggage-cart"></i> <b>Maksymalny rozmiar:</b> <?= $courier->getMaxSize(); ?> cm</span>
+                                <span><i class="fas fa-coins"></i> <b>Dodatkowa trasa:</b> +<?= $courier->getExtraRoad(); ?>km</span>
+                                <span><i class="fas fa-route"></i> <b>Auto:</b> <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></span>
+                                <span><i class="fas fa-user-circle"></i> <b>Author:</b> <?=$courier->getCreatorName(); ?> <?= $courier->getCreatorSurname();?></span>
+                            </div>
+                            <button class="button" style="margin-top: 30px;">Sprawdź</button>
+                        </div>
+                    <?php endforeach; ?>
+                </section>
+            </div>
         </div>
-        <h1>Ogłoszenia:</h1>
-
-        <section class="orders2">
-            <?php foreach($couriers as $courier): ?>
-                <div id="orders-1">
-                    <div>
-
-                    </div>
-                    <div class="route">
-                        <i class="fas fa-city"><?= $courier->getStartCity();?></i>
-                        <i class="fas fa-arrow-right"></i>
-                        <i class="fas fa-city"><?= $courier->getEndCity();?></i>
-                    </div>
-
-                    <div class="order-info">
-                        <i class="fas fa-city"> Data: <?= $courier->getDeadline(); ?></i>
-                        <i class="fas fa-luggage-cart"> Maksymalny rozmiar: <?= $courier->getMaxSize(); ?> cm</i>
-                        <i class="fas fa-coins"> Dodatkowa trasa: +<?= $courier->getExtraRoad(); ?>km</i>
-                        <i class="fas fa-route"> Auto: <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></i>
-                        <h2>
-                            <img src="public/img/tmp_user.svg">
-                            <output>Imie</output>
-                            <output>Nazwisko</output>
-                        </h2>
-                    </div>
-                    <button class="button">Sprawdź</button>
-                </div>
-            <?php endforeach; ?>
-        </section>
     </div>
 
-    <div class = "lower_bar">
-        <div class = "support_bar">
-            <div>
-                Regulamin
-            </div>
-            <div>
-                O nas
-            </div>
-            <div>
-                Centrum pomocy
-            </div>
+    <footer>
+        <div class="support_bar">
+            <a href="#">Regulamin</a>
+            <a href="#">O nas</a>
+            <a href="#">Centrum pomocy</a>
         </div>
         <div class="socialmedia_bar">
-            <div>
+            <a href="https://www.youtube.com/">
                 <i class="fab fa-youtube"></i>
-            </div>
-            <div>
+            </a>
+            <a href="https://twitter.com/">
                 <i class="fab fa-twitter-square"></i>
-            </div>
-            <div>
+            </a>
+            <a href="https://www.facebook.com/">
                 <i class="fab fa-facebook-square"></i>
-            </div>
-            <div>
+            </a>
+            <a href="https://www.instagram.com/">
                 <i class="fab fa-instagram"></i>
-            </div>
+            </a>
         </div>
-    </div>
-</div>
+    </footer>
 </body>
 
-<template id="courier_notice-template">
-    <div id="">
-        <div>
-            <i class="fas fa-city startCity"> startCity </i>
-            <i class="fas fa-arrow-right"></i>
-            <i class="fas fa-city endCity"> endCity </i>
-        </div>
-
-        <div>
-            <i class="fas fa-city date"> Data </i>
-            <i class="fas fa-luggage-cart max_size"> Maksymalny rozmiar </i>
-            <i class="fas fa-coins extra_route"> Dodatkowa trasa </i>
-            <div>
-                <i class="fas fa-route car"> Auto </i>
-                <output class="brand"></output>
-                <output class="model"></output>
-                <output class="year"></output>
-            </div>
-            <h2>
-                <img src="public/img/tmp_user.svg">
-                <output>Imie</output>
-                <output>Nazwisko</output>
-            </h2>
-        </div>
-        <button class="button">Sprawdź</button>
-
-    </div>
-</template>
-
+<script type="text/javascript" src="./public/js/renderMap.js"></script>
+<script>
+    (function() {
+        createMapOfTravels();
+    })();
+</script>
 </html>

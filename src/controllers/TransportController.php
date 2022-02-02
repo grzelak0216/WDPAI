@@ -50,7 +50,10 @@ class TransportController extends AppController {
                 $_POST['time'],
                 $_POST['passengers'],
                 $_FILES['file']['name'],
-                $_POST['description']);
+                $_POST['description'],
+                $_POST['creatorName'],
+                $_POST['creatorSurname']
+            );
 
             $this->transportRepository->addTransportNotice($item);
 

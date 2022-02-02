@@ -9,7 +9,8 @@ class TransportRepository extends Repository
     public function getTransportNotice(int $id): ?Item
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.transport_notices WHERE "ID_creator" = :id
+            SELECT * FROM public.transport_notices cn LEFT JOIN users_details ud 
+            ON cn."ID_creator" = ud."ID_users_details" WHERE "ID_creator" = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -36,7 +37,9 @@ class TransportRepository extends Repository
             $item['time'],
             $item['passengers'],
             $item['image'],
-            $item['description']
+            $item['description'],
+            $item['name'],
+            $item['surname']
         );
     }
 
@@ -48,7 +51,7 @@ class TransportRepository extends Repository
         ');
 
         //TODO you should get this value from logged user session
-        $assignedById = 3;
+        $assignedById = $_COOKIE["userID"];
 
         $stmt->execute([
             $item->getStartCity(),
@@ -76,7 +79,8 @@ class TransportRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM transport_notices;
+            SELECT * FROM transport_notices cn LEFT JOIN users_details ud 
+            ON cn."ID_creator" = ud."ID_users_details";
         ');
         $stmt->execute();
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -98,7 +102,9 @@ class TransportRepository extends Repository
                 $item['time'],
                 $item['passengers'],
                 $item['image'],
-                $item['description']
+                $item['description'],
+                $item['name'],
+                $item['surname']
             );
         }
 

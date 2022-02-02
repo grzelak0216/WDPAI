@@ -27,10 +27,12 @@ class CourierController extends AppController {
         if ($this->isPost()) {
             // TODO create new project object and save it in database
             $courier = new Courier(
-                $_POST['startCity'],
-                $_POST['startStreet'],
-                $_POST['endCity'],
-                $_POST['endStreet'],
+                $_POST['start_name'],
+                $_POST['start_alt'],
+                $_POST['start_long'],
+                $_POST['end_name'],
+                $_POST['end_alt'],
+                $_POST['end_long'],
                 $_POST['extraRoad'],
                 $_POST['maxSize'],
                 $_POST['description'],
@@ -38,7 +40,9 @@ class CourierController extends AppController {
                 $_POST['brand'],
                 $_POST['model'],
                 $_POST['year'],
-                $_POST['registration']
+                $_POST['registration'],
+                $_POST['creatorName'],
+                $_POST['creatorSurname']
             );
 
             $this->courierRepository->addCourierNotice($courier);

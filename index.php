@@ -21,4 +21,9 @@ Router::post('addCourierNotice', 'CourierController');
 Router::post('login', 'SecurityController');
 Router::post('registration', 'SecurityController');
 
+Router::get('logout', 'SecurityController');
+
+Router::get('map', 'MapController');
+Router::get('places', 'MapController');
+
 Router::run($path);
