@@ -6,139 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
+    <script type="text/javascript" src="./public/js/addNotification.js" defer></script>
+
+    <!--    <link rel="stylesheet" href="public/css/primitive.css">-->
+    <link rel="stylesheet" type="text/css" href="public/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="public/css/map.css">
     <title>PROJECTS</title>
 </head>
 
 <body>
-    <header>
-        <div class="header_logo">
-            <img src="public/img/logo.svg">
-        </div>
-        <ul>
-            <li id="search"><a href="#"><i class="fas fa-search"></i> Szukaj</a></li>
-            <li id="add"><a href="#"><i class="far fa-calendar-plus"></i> Dodaj ogłoszenie</a></li>
-            <li><a href="#"><i class="fas fa-list"></i> Rezerwacje</a></li>
-            <li>
-                <?php
-                $user_array = json_decode($_COOKIE['user'], true);
-                if ($user_array) {
-                    $logUsers = new User($user_array['email'], $user_array['password'], $user_array['name'], $user_array['surname']);
-                    echo $logUsers->getName();
-                }
-                ?>
-                <i class="fas fa-user-circle"></i>
-            </li>
-            <li id="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
-        </ul>
-        <div class="option-container">
-            <ul>
-                <li><a href="http://localhost:8080/profile_notice">Profil</a></li>
-                <li><a href="http://localhost:8080/quantition">Wycena</a></li>
-                <li><a href="http://localhost:8080/logout">Wyloguj</a></li>
-            </ul>
-        </div>
-        <div class="option-search">
-            <ul>
-                <li><a href="http://localhost:8080/courier_notice">Szukaj ogłoszenie kurierskie</a></li>
-                <li><a href="http://localhost:8080/transport_notice">Szukaj ogłoszenie transportu</a></li>
-            </ul>
-        </div>
-        <div class="option-add">
-            <ul>
-                <li><a href="http://localhost:8080/addTransportNotice">Dodaj ogłoszenie kurierskie</a></li>
-                <li><a href="http://localhost:8080/addCourierNotice">Dodaj ogłoszenie transportu</a></li>
-            </ul>
-        </div>
-    </header>
+    <?php include "header_bar.php"; ?>
 
-    <div class="container">
+    <div id="<?= $courier->getId(); ?>" class="container">
         <div class="route_info">
             <div class="route">
-                <output>MIASTO1</output>
-                <i class="fas fa-arrow-right"></i>
-                <output>MIASTO2</output>
+                <span><i class="far fa-circle"><?= $courier->getStartName(); ?> </i><i class="fas fa-arrow-down"></i> <i class="far fa-circle"><?= $courier->getEndName(); ?></i> </span>
             </div>
             <div class="date">
-                <output>Day</output>
-                <output>Mounth</output>
-                <output>Year</output>
+                <span><i class="far fa-calendar-alt"><b>Data:</b> </i><?= $courier->getDeadline(); ?></span>
             </div>
         </div>
 
         <div class="curier_info">
-            <div class="foto">
-                <img src="public/img/tmp_user.svg">
-            </div>
             <div class="curier">
-                <output>Name</output>
-                <output>Surname</output>
-                <output>5/5</output>
-                <i class="fas fa-star"></i>
+                <span><i class="fas fa-user-circle"></i> <?= $courier->getCreatorName(); ?> <?= $courier->getCreatorSurname(); ?></span>
             </div>
             <div class="career_info">
-                <div class="orders">
-                    <output>Wykonane zlecenia:</output>
-                    <output>LICZBA</output>
-                </div>
-                <div class="sum_route">
-                    <output>Przejechane kilometry:</output>
-                    <output>LICZBA</output>
-                    <output>km</output>
-                </div>
+                <span><b>Wykonane zlecenia:</b> 0</span>
             </div>
         </div>
 
-        <div class="view_map">
-            <img src="public/img/tmp_map.svg">
-        </div>
+        <div id='map-<?= $courier->getId(); ?>'></div>
 
-        <div class="notice_info">
+        <div class="notice_info" id="<?= $courier->getId(); ?>">
             <div class="data">
-                <div class="car">
-                    <i class="fas fa-car-side"></i>
-                    <output>Auto:</output>
-                </div>
-                <div class="extra_road">
-                    <i class="fas fa-car-side"></i>
-                    <output>Dodatkowa droga:</output>
-                </div>
-                <div class="max_size">
-                    <i class="fas fa-box"></i>
-                    <output>Maksymalny rozmiar:</output>
-                </div>
-                <div class="description">
-                    <i class="fas fa-file-alt"></i>
-                    <output>Opis:</output>
-                </div>
+                <span><i class="fas fa-luggage-cart"></i> <b>Maksymalny rozmiar:</b> <?= $courier->getMaxSize(); ?> cm</span>
+                <span><i class="fas fa-coins"></i> <b>Dodatkowa trasa:</b> +<?= $courier->getExtraRoad(); ?>km</span>
+                <span><i class="fas fa-route"></i> <b>Auto:</b> <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></span>
             </div>
-            <div class="buttons">
-                <button class="button">Opinie</button>
-                <button class="button">Wycena</button>
-                <button class="button">Kontynuuj</button>
-            </div>
+            <button class="addCourierButton">Dodaj</button>
         </div>
     </div>
 
-    <footer>
-        <div class="support_bar">
-            <a href="#">Regulamin</a>
-            <a href="#">O nas</a>
-            <a href="#">Centrum pomocy</a>
-        </div>
-        <div class="socialmedia_bar">
-            <a href="https://www.youtube.com/">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://twitter.com/">
-                <i class="fab fa-twitter-square"></i>
-            </a>
-            <a href="https://www.facebook.com/">
-                <i class="fab fa-facebook-square"></i>
-            </a>
-            <a href="https://www.instagram.com/">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </footer>
+    <?php include "footer_bar.php"; ?>
 </body>
 </html>

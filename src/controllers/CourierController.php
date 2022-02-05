@@ -21,6 +21,13 @@ class CourierController extends AppController {
         $this->render('courier_notice', ['couriers' => $couriers]);
     }
 
+    public function info_courier_notice()
+    {
+        $id = $_GET['hidden'];
+        $courier = $this->courierRepository->getCourierNoticeInfo($id);
+        $this->render('info_courier_notice', ['courier' => $courier]);
+    }
+
 
     public function addCourierNotice()
     {
@@ -42,7 +49,8 @@ class CourierController extends AppController {
                 $_POST['year'],
                 $_POST['registration'],
                 $_POST['creatorName'],
-                $_POST['creatorSurname']
+                $_POST['creatorSurname'],
+                $_POST['id']
             );
 
             $this->courierRepository->addCourierNotice($courier);
@@ -68,5 +76,11 @@ class CourierController extends AppController {
 
             echo json_encode($this->courierRepository->getProjectByCities($decoded['search1'], $decoded['search2']));
         }
+    }
+
+    public function addCourierNoticeToUser(int $ci_id)
+    {
+        $this->courierRepository->addCourierNotificationToUser($ci_id);
+        http_response_code(200);
     }
 }

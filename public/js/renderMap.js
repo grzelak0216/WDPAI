@@ -160,23 +160,3 @@ const renderMapOnAddCourierNotice = () => {
     renderMapWithGeocoder('map-end-city', true);
 }
 
-// TODO od niechcenia
-// const renderMapOnAddCourierNotice = () => {
-//     const maps = [
-//         renderMapWithGeocoder('map-start-city', true),
-//         renderMapWithGeocoder('map-end-city', true)
-//     ]
-//     maps.forEach(map => {
-//         addPoint(map, [parseFloat(endPoint[1]), parseFloat(endPoint[0])])
-//     })
-// }
-
-// Przykład struktury html
-// https://taniarascia.github.io/primitive/
-// https://youmightnotneedjquery.com/
-{/* <div class="container">
-    <div class="flex-row">
-        <div class="flex-small">
-        </div>
-    </div>
-</div> */}

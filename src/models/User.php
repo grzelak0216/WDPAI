@@ -6,17 +6,23 @@ class User {
     private $name;
     private $surname;
     private $phone;
+    private $orderNumber;
+
 
     public function __construct(
         string $email,
         string $password,
         string $name,
-        string $surname
+        string $surname,
+        string $phone,
+        int $orderNumber = 0
     ) {
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
         $this->surname = $surname;
+        $this->phone = $phone;
+        $this->orderNumber = $orderNumber;
     }
 
     public function getEmail(): string
@@ -58,4 +64,16 @@ class User {
     {
         $this->phone = $phone;
     }
+
+    public function getOrderNumber(): int
+    {
+        return $this->orderNumber;
+    }
+
+    public function setOrderNumber(int $orderNumber): void
+    {
+        $this->orderNumber = $orderNumber;
+    }
+
+
 }

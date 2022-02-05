@@ -39,7 +39,46 @@ class TransportRepository extends Repository
             $item['image'],
             $item['description'],
             $item['name'],
-            $item['surname']
+            $item['surname'],
+            $item['ID_transport_notice']
+        );
+    }
+
+    public function getTransportNoticeInfo(int $id): ?Item
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM transport_notices cn LEFT JOIN users_details ud 
+            ON cn."ID_creator" = ud."ID_users_details" WHERE "ID_transport_notice" = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $item = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($item == false) {
+            return null;
+        }
+
+        return new Item(
+            $item['start_city'],
+            $item['start_street'],
+            $item['start_number'],
+            $item['end_city'],
+            $item['end_street'],
+            $item['end_number'],
+            $item['width'],
+            $item['height'],
+            $item['depth'],
+            $item['name'],
+            $item['type'],
+            $item['payment'],
+            $item['time'],
+            $item['passengers'],
+            $item['image'],
+            $item['description'],
+            $item['name'],
+            $item['surname'],
+            $item['ID_transport_notice'],
         );
     }
 
@@ -104,7 +143,8 @@ class TransportRepository extends Repository
                 $item['image'],
                 $item['description'],
                 $item['name'],
-                $item['surname']
+                $item['surname'],
+                $item['ID_transport_notice']
             );
         }
 
@@ -137,5 +177,18 @@ class TransportRepository extends Repository
         }
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function addTransportNotificationToUser(int $ti_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users_transport_notices ( "ID_user", "ID_transport_notices")
+            VALUES ( ?, ?)
+        ');
+
+        $stmt->execute([
+            $_COOKIE["userID"],
+            $ti_id
+        ]);
     }
 }

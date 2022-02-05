@@ -23,6 +23,7 @@ class Item {
     private $description;
     private $creatorName;
     private $creatorSurname;
+    private $id;
 
 
     public function __construct(
@@ -43,7 +44,8 @@ class Item {
         $file,
         $description,
         $creatorName,
-        $creatorSurname)
+        $creatorSurname,
+        $id = null)
 
     {
         $this->startCity = $startCity;
@@ -64,6 +66,7 @@ class Item {
         $this->description = $description;
         $this->creatorName = $creatorName;
         $this->creatorSurname = $creatorSurname;
+        $this->id = $id;
     }
 
 
@@ -145,6 +148,11 @@ class Item {
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getCreatorName(): string

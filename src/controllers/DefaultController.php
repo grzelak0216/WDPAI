@@ -19,14 +19,4 @@ class DefaultController extends AppController {
         $this->render('quotation');
     }
 
-    public function info_transport_notice()
-    {
-        $this->render('info_transport_notice');
-    }
-
-    public function info_courier_notice()
-    {
-        $this->render('info_courier_notice');
-    }
-
 }

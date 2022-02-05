@@ -12,7 +12,13 @@ header {
 }
 
 header li {
-    font-size: 20px;
+    font-size: 1.7em;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #0600c2;
 }
 
 header > ul {
@@ -27,33 +33,49 @@ header > ul {
     align-items: center;
 }
 
-header > .header_logo{
+header > .header_logo > a{
     width: 10vw;
     display: flex;
     justify-content: left;
     align-items: center;
     line-height: 3em;
+
 }
 
-header > .header_logo > img{
+header > .header_logo > a > img{
+
     height: 5vh;
     margin: 0.5em;
+}
+
+footer{
+    height: 6vh;
+    background-color: #9f9f9f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    border-top: 5px solid #4e4e4e;
 }
 
 .socialmedia_bar{
     padding-right: 2em;
     display: flex;
+    align-self: center;
     flex-direction: row;
     justify-content: right;
     grid-gap: 1vw;
+    font-size: 1.5em;
 }
 
 .support_bar{
     padding-left: 2em;
     display: flex;
+    align-self: center;
     flex-direction: row;
     justify-content: left;
     grid-gap: 4vw;
+    font-size: 1.5em;
 }
 
 .logo {
@@ -95,11 +117,14 @@ header > .header_logo > img{
 
 .option-container {
     display: none;
+    list-style: none;
     padding: 0;
     margin: 0;
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 7%;
+    right: 1%;
+    background-color: #ffffff;
+    border: 2px solid #000000;
 }
 
 .option-container.active {
@@ -112,11 +137,14 @@ header > .header_logo > img{
 
 .option-search {
     display: none;
+    list-style: none;
     padding: 0;
     margin: 0;
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 7%;
+    right: 39%;
+    background-color: #ffffff;
+    border: 2px solid #000000;
 }
 
 .option-search.active {
@@ -130,14 +158,66 @@ header > .header_logo > img{
 
 .option-add {
     display: none;
+    list-style: none;
     padding: 0;
     margin: 0;
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 7%;
+    right: 21.5%;
+    background-color: #ffffff;
+    border: 2px solid #000000;
 }
 
 .option-add.active {
     display: block;
+}
+
+@media only screen and (max-device-width: 420px) {
+    header{
+        font-size: 1em;
+
+    }
+
+    footer{
+        height: 25vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .support_bar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .socialmedia_bar{
+        display: flex;
+        flex-direction: row;
+        column-gap: 1em;
+        padding: 0;
+    }
+
+    header > ul{
+        padding-right: 0.5em;
+        column-gap: 0.5em;
+    }
+
+    ul > li{
+        font-size: 1em;
+    }
+
+    ul > li > a:last-child{
+        font-size: 0;
+    }
+
+    header > .header_logo > a > img{
+        width: auto;
+        height: 1em;
+        padding: 0;
+        margin: 0.5em;
+    }
+
 }
 

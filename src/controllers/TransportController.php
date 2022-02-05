@@ -25,6 +25,13 @@ class TransportController extends AppController {
         $this->render('transport_notice', ['items' => $items]);
     }
 
+    public function info_transport_notice()
+    {
+        $id = $_GET['hidden'];
+        $item = $this->transportRepository->getTransportNoticeInfo($id);
+        $this->render('info_transport_notice', ['item' => $item]);
+    }
+
     public function addTransportNotice()
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -52,7 +59,8 @@ class TransportController extends AppController {
                 $_FILES['file']['name'],
                 $_POST['description'],
                 $_POST['creatorName'],
-                $_POST['creatorSurname']
+                $_POST['creatorSurname'],
+                $_POST['id']
             );
 
             $this->transportRepository->addTransportNotice($item);
@@ -95,4 +103,14 @@ class TransportController extends AppController {
         }
         return true;
     }
+
+    public function addTransportNoticeToUser(int $ti_id)
+    {
+        $this->transportRepository->addTransportNotificationToUser($ti_id);
+        http_response_code(200);
+    }
+
+
+
+
 }

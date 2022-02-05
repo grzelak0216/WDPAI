@@ -64,6 +64,7 @@ class SecurityController extends AppController {
         $surname = $_POST['surname'];
         $phone = $_POST['phone'];
 
+
         if ($password !== $confirmedPassword) {
             return $this->render('registration', ['messages' => ['Please provide proper password']]);
         }
@@ -71,7 +72,7 @@ class SecurityController extends AppController {
         //TODO try to use better hash function
         $user = new User($email, md5($password), $name, $surname);
         $user->setPhone($phone);
-
+        $user->setOrderNumber(0);
         $this->userRepository->addUser($user);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
@@ -97,5 +98,12 @@ class SecurityController extends AppController {
         }
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");
+    }
+
+    public function profile_notice()
+    {
+        $id = $_COOKIE["userID"];
+        $notices = $this->userRepository->getNotices($id);
+        $this->render('profile_notice', ['notices' => $notices]);
     }
 }

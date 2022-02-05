@@ -18,49 +18,12 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
+
+    <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <div class="header_logo">
-            <img src="public/img/logo.svg">
-        </div>
-        <ul>
-            <li id="search"><a href="#"><i class="fas fa-search"></i> Szukaj</a></li>
-            <li id="add"><a href="#"><i class="far fa-calendar-plus"></i> Dodaj ogłoszenie</a></li>
-            <li><a href="#"><i class="fas fa-list"></i> Rezerwacje</a></li>
-            <li>
-                <?php
-                $user_array = json_decode($_COOKIE['user'], true);
-                if ($user_array) {
-                    $logUsers = new User($user_array['email'], $user_array['password'], $user_array['name'], $user_array['surname']);
-                    echo $logUsers->getName();
-                }
-                ?>
-                <i class="fas fa-user-circle"></i>
-            </li>
-            <li id="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
-        </ul>
-        <div class="option-container">
-            <ul>
-                <li><a href="http://localhost:8080/profile_notice">Profil</a></li>
-                <li><a href="http://localhost:8080/quantition">Wycena</a></li>
-                <li><a href="http://localhost:8080/logout">Wyloguj</a></li>
-            </ul>
-        </div>
-        <div class="option-search">
-            <ul>
-                <li><a href="http://localhost:8080/courier_notice">Szukaj ogłoszenie kurierskie</a></li>
-                <li><a href="http://localhost:8080/transport_notice">Szukaj ogłoszenie transportu</a></li>
-            </ul>
-        </div>
-        <div class="option-add">
-            <ul>
-                <li><a href="http://localhost:8080/addTransportNotice">Dodaj ogłoszenie kurierskie</a></li>
-                <li><a href="http://localhost:8080/addCourierNotice">Dodaj ogłoszenie transportu</a></li>
-            </ul>
-        </div>
-    </header>
+    <?php include "header_bar.php"; ?>
 
     <form action="/addCourierNotice" class="data" method="post" ENCTYPE="multipart/form-data">
         <div class="container">
@@ -69,7 +32,7 @@
                 <div class="flex-small">
                     <div class="startCity">
                         <label><i class="fas fa-hourglass-half"></i> Start city</label>
-                        <div id="map-start-city" style="width: 100%; height: 200px; margin-bottom: 20px;"></div>
+                        <div id="map-start-city"></div>
                         <input id="map-start-city-name" name="start_name" type="text" placeholder="Miasto poczatkowe" >
                         <input id="map-start-city-alt" name="start_alt" type="text" placeholder="ALT">
                         <input id="map-start-city-long" name="start_long" type="text" placeholder="LONG">
@@ -93,7 +56,7 @@
                 <div class="flex-small">
                     <div class="endCityName">
                         <label><i class="fas fa-hourglass-half"></i> End city</label>
-                        <div id="map-end-city" style="width: 100%; height: 200px; margin-bottom: 20px;"></div>
+                        <div id="map-end-city" ></div>
                         <input id="map-end-city-name" name="end_name" type="text" placeholder="Miasto końcowe">
                         <input id="map-end-city-alt" name="end_alt" type="text" placeholder="ALT">
                         <input id="map-end-city-long" name="end_long" type="text" placeholder="LONG">
@@ -127,27 +90,7 @@
         </div>
     </form>
 
-    <footer>
-        <div class="support_bar">
-            <a href="#">Regulamin</a>
-            <a href="#">O nas</a>
-            <a href="#">Centrum pomocy</a>
-        </div>
-        <div class="socialmedia_bar">
-            <a href="https://www.youtube.com/">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://twitter.com/">
-                <i class="fab fa-twitter-square"></i>
-            </a>
-            <a href="https://www.facebook.com/">
-                <i class="fab fa-facebook-square"></i>
-            </a>
-            <a href="https://www.instagram.com/">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </footer>
+    <?php include "footer_bar.php"; ?>
 </div>
 <script type="text/javascript" src="./public/js/renderMap.js"></script>
 <script>

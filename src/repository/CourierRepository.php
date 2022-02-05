@@ -37,7 +37,44 @@ class CourierRepository extends Repository
             $courier['car_year'],
             $courier['car_registration'],
             $courier['name'],
-            $courier['surname']
+            $courier['surname'],
+            $courier['ID_courier_notices']
+        );
+    }
+
+    public function getCourierNoticeInfo(int $id): ?Courier
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM courier_notices cn LEFT JOIN users_details ud 
+            ON cn."ID_creator" = ud."ID_users_details" WHERE "ID_courier_notices" = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $courier = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($courier == false) {
+            return null;
+        }
+
+        return new Courier(
+            $courier['start_name'],
+            $courier['start_alt'],
+            $courier['start_long'],
+            $courier['end_name'],
+            $courier['end_alt'],
+            $courier['end_long'],
+            $courier['extra_road'],
+            $courier['max_size'],
+            $courier['description'],
+            $courier['date'],
+            $courier['car_brand'],
+            $courier['car_model'],
+            $courier['car_year'],
+            $courier['car_registration'],
+            $courier['name'],
+            $courier['surname'],
+            $courier['ID_courier_notices']
         );
     }
 
@@ -50,7 +87,7 @@ class CourierRepository extends Repository
 
         //TODO you should get this value from logged user session
         // $assignedById = $_COOKIE["userID"];
-        $assignedById = 3;
+        $assignedById = $_COOKIE["userID"];
 
         $stmt->execute([
             $courier->getStartName(),
@@ -99,7 +136,8 @@ class CourierRepository extends Repository
                 $courier['car_year'],
                 $courier['car_registration'],
                 $courier['name'],
-                $courier['surname']
+                $courier['surname'],
+                $courier['ID_courier_notices']
             );
         }
 
@@ -132,5 +170,19 @@ class CourierRepository extends Repository
         }
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function addCourierNotificationToUser(int $ti_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users_courier_notices ( "ID_users", "ID_courier_notices")
+            VALUES ( ?, ?)
+        ');
+
+        $stmt->execute([
+            $_COOKIE["userID"],
+            $ti_id
+        ]);
+
     }
 }
