@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+
+}
+
+.container {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    row-gap: 3em;
+}
+
+.container > .route{
+    font-size: 5em;
+}
+
+.container > .couriers-travels  >.route_info {
+    width: 90%;
+    font-size: 2em;
+    margin-left: 3em;
+}
+
+.route_info > .date{
+    justify-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.container > .transport_info{
+    display: flex;
+    flex-direction: row;
+    column-gap: 3em;
+}
+
+.container > .transport_info > .view_item{
+    box-shadow: 10px 10px 10px #000000;
+}
+
+.container > .transport_info > .notice_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30vw;
+}
+
+button {
+    background: #0012FF 0% 0% no-repeat padding-box;
+    border: 1px solid #F8F817;
+    border-radius: 32px;
+    text-align: center;
+    width: 7vw;
+    height: 5vh;
+    margin-bottom: 0.5em;
+    font: normal normal normal 25px/30px Microsoft Sans Serif;
+    letter-spacing: 0px;
+    color: #F8F817;
+    align-self: end;
+}
+
+.container > .transport_info > .notice_info > .customers{
+    font-size: 3em;
+}
+
+.container > .transport_info > .notice_info > .data{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5em;
+    width: 30vw;
+    row-gap: 1em;
+}
+
+.transport_info > .notice_info > .data > span{
+    border-bottom: 2px solid #000000;
+    align-content: space-between;
+}
+
+
+.courier-single{
+    display: flex;
+    flex-direction: row;
+    padding-top: 3em;
+    justify-content: space-around;
+    flex-basis: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.courier-single > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.courier-single > div > .notice_info{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1em;
+    font-size: 1em;
+    width: 30vw;
+    row-gap: 1em;
+}
+
+.courier-single > div > .notice_info > span{
+    border-bottom: 2px solid #000000;
+    align-content: space-between;
+}
+
+.mapboxgl-map {
+    width: 600px;
+    height: 500px;
+}
+
+.couriers-travels {
+    display: flex;
+    flex-wrap: wrap;
+}
