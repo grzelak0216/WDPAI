@@ -39,18 +39,6 @@ class UserRepository extends Repository
     public function addUser(User $user)
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_details (name, surname, phone_number, order_number)
-            VALUES (?, ?, ?, ?)
-        ');
-
-        $stmt->execute([
-            $user->getName(),
-            $user->getSurname(),
-            $user->getPhone(),
-            $user->getOrderNumber()
-        ]);
-
-        $stmt = $this->database->connect()->prepare('
             INSERT INTO users ( email, password)
             VALUES ( ?, ?)
         ');
@@ -58,6 +46,28 @@ class UserRepository extends Repository
         $stmt->execute([
             $user->getEmail(),
             $user->getPassword()
+        ]);
+
+        $email = $user->getEmail();
+        $stmt = $this->database->connect()->prepare('
+            SELECT "ID_user" FROM users WHERE email = :email
+        ');
+        $stmt->bindParam(':email',$email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $id = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users_details ("ID_users_details",name, surname, phone_number, order_number)
+            VALUES (?, ?, ?, ?, ?)
+        ');
+
+        $stmt->execute([
+            $id["ID_user"],
+            $user->getName(),
+            $user->getSurname(),
+            $user->getPhone(),
+            $user->getOrderNumber()
         ]);
     }
 

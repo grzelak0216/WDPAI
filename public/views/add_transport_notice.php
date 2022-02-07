@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="public/css/style_add_transport_notice.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style_notice_add.css">
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
@@ -14,18 +14,18 @@
 <body>
     <?php include "header_bar.php"; ?>
 
-    <div class="container">
+    <div class="container-add-tr">
         <form action="addTransportNotice" method="POST" ENCTYPE="multipart/form-data">
-            <h1>Wprowadz dane </h1>
+            <h1>Wprowadź dane</h1>
             <div class="startCity">
-                <label><i class="fas fa-box">Adres początkowy: </i></label>
+                <label><i class="fas fa-city">Adres początkowy: </i></label>
                 <input name="startCity" type="text" placeholder="Miasto poczatkowe">
                 <input name="startStreet" type="text" placeholder="Nazwa ulicy">
                 <input name="startNumber" type="text" placeholder="Numer lokalu">
             </div>
 
             <div class="endCityName">
-                <label><i class="fas fa-box">Adres końcowy: </i></label>
+                <label><i class="fas fa-city">Adres końcowy: </i></label>
                 <input name="endCity" type="text" placeholder="Miasto Koncowe">
                 <input name="endStreet" type="text" placeholder="Nazwa ulicy">
                 <input name="endNumber" type="text" placeholder="Numer lokalu">
@@ -37,18 +37,10 @@
             </div>
 
             <div class="size">
-                <div class="width">
-                    <label><i class="fas fa-expand-alt">Szerokosc: </i></label>
+                    <label><i class="fas fa-expand-alt">Wymiary: </i></label>
                     <input name="width" type="number" placeholder="Szerokosc">
-                </div>
-                <div class="height">
-                    <label><i class="fas fa-expand-alt">Wysokosc: </i></label>
                     <input name="height" type="number" placeholder="Wysokosc">
-                </div>
-                <div class="depth">
-                    <label><i class="fas fa-expand-alt">Glebokosc: </i></label>
                     <input name="depth" type="number" placeholder="Glebokosc">
-                </div>
             </div>
 
             <div class="type">
@@ -72,7 +64,7 @@
 
             <div class="description">
                 <label><i class="fas fa-file-alt">Opis: </i></label>
-                <textarea name="description" rows="5" type="text" placeholder="Opis"></textarea>
+                <textarea name="description" rows="1" type="text" placeholder="Opis"></textarea>
             </div>
 
             <div class="messages">
@@ -96,8 +88,8 @@
                 <img src="public/img/logo.svg">
             </div>
             <div class="slogan">
-                <output>From Random</output>
-                <output> For You</output>
+                <span><b>From Random</b></span>
+                <span><b>For You</b></span>
             </div>
         </div>
 

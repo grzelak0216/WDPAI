@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="public/css/style_start.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
@@ -14,7 +14,7 @@
 <body>
     <?php include "header_bar.php"; ?>
 
-    <div class="container">
+    <div class="container-start">
         <div class="start_search">
             <div>
                 <span><b>Przewozy w najniższych cenach</b></span>

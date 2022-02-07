@@ -6,7 +6,7 @@ calculateButton.addEventListener('click', () => {
     const depthInput = document.querySelector('input[name="depth"]').value;
     const lengthInput = document.querySelector('input[name="route"]').value;
 
-    const result = (+widthInput * +heightInput * +depthInput) * +lengthInput / 250;
+    const result = (+widthInput/100 * +heightInput/100 * +depthInput/100) * 3 + (+lengthInput / 10);
 
     outputResult.innerHTML = result;
 })

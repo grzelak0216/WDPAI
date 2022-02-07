@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="public/css/style_profile_notice.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style_notice.css">
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
@@ -15,7 +15,7 @@
 
     <?php include "header_bar.php"; ?>
 
-    <div class="container">
+    <div class="container-profile">
 
         <?php
         $user_array = json_decode($_COOKIE['user'], true);
@@ -26,7 +26,7 @@
 
         <div class="profile_info">
             <div class="curier">
-                <span><?php echo $logUsers->getName() ?> <?php echo $logUsers->getSurname() ?></span>
+                <span><i class="fas fa-user-circle"></i> <?php echo $logUsers->getName() ?> <?php echo $logUsers->getSurname() ?></span>
                 <span><b>Wykonane zlecenia:</b> <?php echo $logUsers->getOrderNumber() ?></span>
             </div>
             <div class="contakt">
@@ -36,31 +36,39 @@
         </div>
 
         <div class="notices">
+            <span><h3>Ogłoszenia przewozu:</h3></span>
             <section class="item">
                 <?php foreach($notices[1] as $item): ?>
                     <div id="<?= $item->getId(); ?>">
                         <div class="order">
-                            <span><?=$item->getCreatorName(); ?> <?= $item->getCreatorSurname();?></span>
+                            <span><i class="fas fa-user-circle"></i> <?=$item->getCreatorName(); ?> <?= $item->getCreatorSurname();?></span>
                             <span><i class="fas fa-city"> <b>Miasto poczatkowe:</b> <?= $item->getStartCity(); ?></i></span>
                             <span><i class="fas fa-city"> <b>Miasto koncowe:</b> <?= $item->getEndCity(); ?></i></span>
                             <span><i class="fas fa-luggage-cart"> <b>Typ:</b> <?= $item->getType(); ?></i></span>
                             <span><i class="fas fa-coins"> <b>Zapłata:</b> <?= $item->getPayment(); ?></i></span>
+                            <span><a class="check" href="http://localhost:8080/info_transport_notice?hidden=<?= $item->getId(); ?>"><i class="fas fa-search"></i></a></span>
                         </div>
-                        <span><a class="check" href="http://localhost:8080/info_transport_notice?hidden=<?= $item->getId(); ?>">Q</a></span>
+
                     </div>
                 <?php endforeach; ?>
             </section>
+            <span><h3>Ogłoszenia kurierskie:</h3></span>
             <section class="courier">
                 <?php foreach($notices[0] as $courier): ?>
                     <div id="<?= $courier->getId(); ?>">
                         <div class="order">
-                            <span><?=$courier->getCreatorName(); ?> <?= $courier->getCreatorSurname();?></span>
-                            <span><i class="fas fa-city"> <b>Miasto poczatkowe:</b> <?= $courier->getStartName(); ?></i></span>
-                            <span><i class="fas fa-city"> <b>Miasto koncowe:</b> <?= $courier->getEndName(); ?></i></span>
-                            <span><i class="fas fa-luggage-cart"> <b>auto:</b> <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></i></span>
-                            <span><i class="fas fa-coins"> <b>data:</b> <?= $courier->getDeadLine(); ?></i></span>
+                            <div>
+
+                                <span><i class="fas fa-city"> <b>Miasto poczatkowe:</b> <?= $courier->getStartName(); ?></i></span>
+                                <span><i class="fas fa-city"> <b>Miasto koncowe:</b> <?= $courier->getEndName(); ?></i></span>
+                            </div>
+                            <div>
+                                <span><i class="fas fa-user-circle"></i> <?=$courier->getCreatorName(); ?> <?= $courier->getCreatorSurname();?></span>
+                                <span><i class="fas fa-luggage-cart"> <b>auto:</b> <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></i></span>
+                                <span><i class="fas fa-coins"> <b>data:</b> <?= $courier->getDeadLine(); ?></i></span>
+                                <span><a class="check" href="http://localhost:8080/info_courier_notice?hidden=<?= $courier->getId(); ?>"><i class="fas fa-search"></i></a></span>
+                            </div>
                         </div>
-                        <span><a class="check" href="http://localhost:8080/info_courier_notice?hidden=<?= $courier->getId(); ?>">Q</a></span>
                     </div>
                 <?php endforeach; ?>
             </section>

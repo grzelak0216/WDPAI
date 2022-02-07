@@ -8,7 +8,7 @@
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
     <script type="text/javascript" src="./public/js/addNotification.js" defer></script>
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
-    <link rel="stylesheet" type="text/css" href="public/css/style_info_transport_notice.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style_notice_info.css">
     <title>PROJECTS</title>
 </head>
 
@@ -22,23 +22,23 @@
         </div>
 
         <div class="transport_info" >
-            <div class="customers">
-                <span><i class="fas fa-user-circle"></i> <?= $item->getCreatorName(); ?> <?= $item->getCreatorSurname(); ?></span>
-            </div>
 
             <div class="view_item">
                 <img src="public/uploads/<?= $item->getFile(); ?>">
             </div>
 
             <div class="notice_info" id="<?= $item->getId(); ?>">
+                <div class="customers">
+                    <span><i class="fas fa-user-circle"></i> <?= $item->getCreatorName(); ?> <?= $item->getCreatorSurname(); ?></span>
+                </div>
                 <div class="data">
-                    <span><i class="fas fa-box"></i> <b>Nazwa:</b> <?= $item->getName(); ?></span>
-                    <span><i class="fas fa-expand-alt"></i> <b>Rozmiar:</b>  <?= $item->getWidth(); ?> <b>x</b> <?= $item->getHeight(); ?> <b>x</b> <?= $item->getDepth(); ?></span>
-                    <span><i class="fas fa-luggage-cart"></i> <b>Typ:</b> <?= $item->getType(); ?></span>
-                    <span><i class="fas fa-coins"></i> <b>Zaplata:</b> <?= $item->getPayment(); ?></span>
-                    <span><i class="fas fa-hourglass-half"></i> <b>Czas:</b> <?= $item->getTime(); ?></span>
-                    <span><i class="fas fa-user-plus"></i> <b>Pasażerowie:</b> <?= $item->getPassengers(); ?></span>
-                    <span><i class="fas fa-file-alt"></i> <b>Opis:</b> <?= $item->getDescription(); ?></span>
+                    <span><i class="fas fa-box"><b>Nazwa:</b></i> <?= $item->getName(); ?></span>
+                    <span><i class="fas fa-expand-alt"><b>Rozmiar:</b></i> <?= $item->getWidth(); ?> <b>x</b> <?= $item->getHeight(); ?> <b>x</b> <?= $item->getDepth(); ?></span>
+                    <span><i class="fas fa-luggage-cart"><b>Typ:</b></i> <?= $item->getType(); ?></span>
+                    <span><i class="fas fa-coins"><b>Zaplata:</b></i> <?= $item->getPayment(); ?></span>
+                    <span><i class="fas fa-hourglass-half"><b>Czas:</b></i> <?= $item->getTime(); ?></span>
+                    <span><i class="fas fa-user-plus"><b>Pasażerowie:</b></i> <?= $item->getPassengers(); ?></span>
+                    <span><i class="fas fa-file-alt"><b>Opis:</b></i> <?= $item->getDescription(); ?></span>
                 </div>
                 <button class="addTransportButton">Dodaj</button>
             </div>

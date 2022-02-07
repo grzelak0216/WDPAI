@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="public/css/style_transport_notice.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style_notice.css">
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
     <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
@@ -15,7 +15,7 @@
 
 <body>
     <?php include "header_bar.php"; ?>
-    <div class="container">
+    <div class="container-transport">
         <div class="route_search">
             <h2>Szukaj trasy: </h2>
             <input name="startCity" type="text" placeholder="Miasto poczatkowe">
@@ -32,8 +32,8 @@
                             <span><i class="fas fa-user-circle"></i><?=$item->getCreatorName(); ?> <?= $item->getCreatorSurname();?></span>
                         </h2>
                         <div class="order_info">
-                            <span><i class="fas fa-city"> <b>Miasto poczatkowe:</b> <?= $item->getStartCity(); ?></i></span>
-                            <span><i class="fas fa-city"> <b>Miasto koncowe:</b> <?= $item->getEndCity(); ?></i></span>
+                            <span><i class="fas fa-city"> <b>Miasto poczatkowe:</b> <?= $item->getStartCity(); ?> <?= $item->getStartStreet(); ?></i></span>
+                            <span><i class="fas fa-city"> <b>Miasto koncowe:</b> <?= $item->getEndCity(); ?> <?= $item->getEndStreet(); ?></i></span>
                             <span><i class="fas fa-luggage-cart"> <b>Typ:</b> <?= $item->getType(); ?></i></span>
                             <span><i class="fas fa-coins"> <b>Zapłata:</b> <?= $item->getPayment(); ?></i></span>
                         </div>
