@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bbd5fb75aa.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
-    <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bbd5fb75aa.js" crossorigin="anonymous"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
@@ -14,8 +14,8 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
-    <link rel="stylesheet" type="text/css" href="public/css/style_notice_info.css">
-    <link rel="stylesheet" type="text/css" href="public/css/bars.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style_notice.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>PROJECTS</title>
 </head>
 
@@ -27,8 +27,8 @@
         <?php $index = 0; ?>
         <div class="route_info">
                 <span><i class="fas fa-city"><?= $courier->getStartName(); ?> </i></span>
-                <span><i class="fas fa-city"><?= $courier->getEndName(); ?></i> </span
-            </div>
+                <span><i class="fas fa-city"><?= $courier->getEndName(); ?></i> </span>
+        </div>
         <div id="courier-single-<?php echo $index; ?>"
                     class="courier-single"
                     data-start-alt="<?php echo $courier->getStartAlt(); ?>"

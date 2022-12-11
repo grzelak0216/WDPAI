@@ -1,21 +1,92 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: #000;
+    font-family: 'Lato', sans-serif;
 }
 
-.container-start {
-    width: 100vw;
-    height: 100vh;
-    background: #ffffff  0% 0% no-repeat padding-box;
+body {
+    width: 100%;
+    height: 100%;
+}
 
+
+body > header {
+    width: 100%;
+    height: 10vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-gap: 2vw;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: linear-gradient(90deg, rgba(0,143,255,.2) 0%, rgba(0,143,255,.2) 55%, rgba(0,143,255,1) 100%);
+    border-bottom: 5px solid #008FFF;
 }
 
-.start_search{
-    width: 100vw;
-    height: 45vh;
+header > ul {
+    grid-column: 1;
+    width: 17vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-self: left;
+    align-items: center;
+    font-size: 2em;
+    padding-right: 1em;
+}
+
+header > .header_logo{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header > .header_logo > a{
+    text-align: center;
+}
+
+header > .header_logo > a > img {
+    width: 50%;
+}
+
+header > .option-container {
+    position: absolute;
+    z-index: 999;
+    top: 10vh;
+    left: -15vw;
+    height: 90vh;
+    width: 15vw;
+    padding: 2em 0 0 1em ;
+    background: #dcf0ff;
+    border-right: 2px solid #51b1fb;
+    line-height: 2em;
+    font-size: 1.2em;
+}
+
+header > div.active_nav {
+    left: 0;
+    transition: 0.2s;
+}
+
+header > .option-container > ul > li:hover > a {
+    font-weight: bold;
+    border-bottom: 1px solid blue;
+    transition: 0.15s;
+}
+
+body > main {
+    height: 90vh;
+    width: 100%;
+}
+
+main > .start {
+    width: 100%;
+    height: 40vh;
     background-image: url("../img/start_background.svg");
     background-color: #cccccc;
     object-fit: cover;
@@ -24,470 +95,169 @@ body {
     justify-content: center;
     align-items: center;
     grid-gap: 5vh;
+    font-size: 4em;
+    border-bottom: 5px solid #008FFF;
 }
 
-.start_search > div:first-child{
-    display: flex;
-    justify-content: center;
-
-    font: normal normal normal 55px/50px Segoe UI;
-    letter-spacing: 0px;
-    color: #FFF700;
-
+.start > p {
+    font-weight: bold;
+    color: rgb(255, 231, 134);
 }
 
-.input_bars{
-    width: 95vw;
-    height: 10vh;
-
-    background: #FAFA03F5 0% 0% no-repeat padding-box;
-    box-shadow: inset 3px 3px 3px #2A01FF29, 3px 3px 3px #2A01FF29;
-    border: 1px solid #707070;
-    border-radius: 39px;
-
-    padding: 0.3em;
-
-    font-size: 1.4em;
-    color: #004CFF;
-
+main > .web_advantages{
+    display: block;
+    height: 50vh;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between
-
+    font-size: 4em;
+    justify-content: space-around;
 }
 
-.input_bars > div > input {
-
-    background: #ffffff00;
-    border: 0px;
-
-    font: normal normal normal 1.2em/1.4em Microsoft Sans Serif;
-    letter-spacing: 0px;
-
-}
-
-::placeholder {
-    color: #004CFF;
-    opacity: 1;
-}
-
-.web_advantages{
-    width: 85vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.web_advantages > span{
+.web_advantages > i {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-content: center; */
     text-align: center;
-    font-size: 55px;
-}
-
-.web_slogan > .slogan > span{
-    width: 30vw;
-    text-align: center;
-    justify-content: space-around;
-    font: normal normal normal 80px/80px Javanese Text;
-    letter-spacing: normal;
-    color: #0810FF;
-}
-
-.web_slogan > .logo{
-    display: flex;
-    flex-direction: column;
-    line-height: 4em;
-    width: 35vw;
-    height: 20vh;
-    justify-content: center;
-}
-
-.container-login {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-.login > form {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1em;
-    background: #D7E1FC 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 0.1em;
-}
-
-.login > form > button {
-    width: 280px;
-    height: 84px;
-
-    background: #F7F767 0% 0% no-repeat padding-box;
-    border: 1px solid #F8F817;
-    border-radius: 32px;
-
-    text-align: center;
-    font: normal normal normal 40px/50px Segoe UI;
-    letter-spacing: 0px;
-    color: #000000;
-    justify-self: center;
-    align-self: center;
-}
-
-.login > form > input {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 28px;
-
-    padding: 1em;
-    margin: 1em;
-    width: 45vw;
-
-    text-align: left;
-    font: normal normal normal 25px/50px Microsoft Sans Serif;
-    letter-spacing: 0px;
-    color: #000000;
-}
-
-.container-login > .web_slogan {
-    width: 40vw;
-    padding: 1em;
-    justify-content: space-between;
-    align-content: space-between;
-}
-
-form > span{
-    font-size: 1em;
-    padding-left: 3em;
-    justify-self: start;
-    align-self: start;
-}
-
-
-.container-registration {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.container-registration > .user_form{
-    background: #D7E1FC 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 0.1em;
-    width: 45vw;
-    font-size: 2.5em;
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-    justify-items: center;
-    align-items: center;
-    row-gap: 1vh;
-}
-
-.container-registration > .user_form > h3{
-    margin: 0;
-    padding: 0.1em;
-}
-
-.container-registration > .web_slogan{
-    justify-self: center;
-    align-self: center;
-    font-size: 3em;
-    justify-content: space-around;
-}
-
-
-.user_form > button{
-    background: #0012FF 0% 0% no-repeat padding-box;
-    border: 1px solid #F8F817;
-    border-radius: 32px;
-    text-align: center;
-    align-self: center;
-    width: 17vw;
-    height: 7vh;
-    margin-bottom: 0.5em;
-    font: normal normal normal 35px/50px Microsoft Sans Serif;
-    letter-spacing: 0px;
-    color: #F8F817;
-}
-
-.container-registration > .user_form > input {
-    align-self: center;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 20px;
-    padding: 0.2em;
-    width: 40vw;
-
-    text-align: left;
-    font: normal normal normal 25px/50px Microsoft Sans Serif;
-    letter-spacing: normal;
-    color: #000000;
-}
-
-.container-registration > .user_form > .statute_form{
-    padding-left: 2em;
-    font-size: 0.5em;
-    justify-self: start;
-    align-self: start;
-}
-
-.container-registration > .user_form > span{
-
-    padding-left: 2em;
-    font-size: 0.5em;
-    justify-content: start;
-    align-content: start;
-}
-
-.no-valid {
-    border: 3px solid red;
-    border-radius: 1em;
-    box-shadow: 0 0 0.2em red;
-    outline: none;
-}
-
-.container-quotation{
-    display: flex;
-    flex-direction: row;
-    height: 90vh;
-    justify-content: space-around;
-    align-content: center;
-    align-items: center;
-}
-
-.container-quotation > div > .quotation_form{
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 3em;
-
-
-
-}
-
-div > .quotation_form > li{
-    padding: 1em;
-    border: 3px solid #000000;
-    border-radius: 20px;
-}
-
-.container-quotation > div > .quotation_form > li > input{
-    width: 90%;
-    border: none;
-    border-bottom: 2px solid #000000;
-}
-
-.container-quotation > div > .result{
-    margin-top: 2em;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-around;
-}
-
-.result > button{
-    background: #0012FF 0% 0% no-repeat padding-box;
-    border: 1px solid #F8F817;
-    border-radius: 32px;
-    text-align: center;
-    align-self: center;
-    width: 7vw;
-    height: 5vh;
-    margin-bottom: 0.5em;
-    font: normal normal normal 25px/30px Microsoft Sans Serif;
-    letter-spacing: 0px;
-    color: #F8F817;
-}
-
-.result > .price{
-    padding-top: 10px;
-    font: normal normal normal 25px/30px Microsoft Sans Serif;
-}
-
-
-
-html, body {
-    height: 100%;
-}
-
-header {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 1;
+    line-height: 1.2em;
 }
 
 footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
     width: 100%;
-    height: 60px;
-    background: #CCCCCC 0% 0% no-repeat padding-box;
-    border-top: 1px solid #707070;
+    height: 3vh;
+    background-color: #333;
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    
+}
+
+footer > ul {
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+    font-size: 1.2em;
+    justify-content: space-around;
+    align-self: center;
+}
+
+footer > ul > li > a, footer > ul > li > a > i {
+    color: #fff;
+}
+
+.wallpaper  {
+    background-image: url("../img/wallpaper.svg");
+    display: flex;
+    background-size: cover;
+    opacity: .8;
+    justify-content: center;
+    align-items: center;
+} 
+
+main > .form_wrapper {
+    display: flex;
+    width: 75vw;
+    height: 75vh;
+    background-color: #eeeeffdd;
+    border-radius: 5em;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
 
-.container {
-    padding-bottom: 100px;
+.form_wrapper > .web_slogan {
+    width: 33vw;
+    font-size: 3.5em;
 }
 
-.buttons {
+.web_slogan > .logo {
+    text-align: center;
+}
+
+.web_slogan > .logo > img {
+    width: 33vw;
+} 
+
+.web_slogan > .slogan {
     display: flex;
-    justify-content: flex-end;
-    margin: 30px 0;
+    flex-direction: column;
+    text-align: center;
 }
 
-.buttons button {
-    margin-left: 10px;
+.form_wrapper > form.login {
+    width: 33vw;
+    height: 65vh;
+    display: flex;
+    font-size: 1.2em;
+    flex-direction: column;
+    justify-content: center;
 }
 
-@media only screen and (max-device-width: 420px) {
-    .container-start, .container-login, .container-registration {
-        flex-direction: column;
-        align-items: center;
-        height: 125vh;
-        width: 100vw;
-    }
-
-    * {
-        font-size: 25px;
-    }
-
-    .web_slogan{
-        display: none;
-    }
-
-    input{
-        width: 90%;
-        padding: 0.5em;
-        margin: 0.5em;
-    }
-
-    button {
-        width: 50vw;
-        height: 10vh;
-        font-size: 100%;
-    }
-
-    .container-login {
-        height: 80vh;
-        margin: 0;
-        padding-top: 0;
-    }
-
-    .container-login > .login{
-        padding: 0;
-        margin: 0;
-        width: 95vw;
-    }
-
-    .login > form > input {
-        justify-self: center;
-
-        height: 5vh;
-        width: 95%;
-        margin: 0;
-        padding-bottom: 1em;
-
-        align-self: center;
-
-
-    }
-
-    .container-start > .web_advantages{
-        padding-top: 2em;
-        padding-bottom: 2em;
-        height: 30vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        row-gap: 5vh;
-        font-size: 2.5em;
-    }
-
-    .start_search > .input_bars > div > input  {
-        font-size: 0.4em;
-    }
-
-
-    .start_search > .input_bars > div {
-        width: 15vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-self: center;
-        align-content: center;
-    }
-
-
-    .start_search > .input_bars {
-        height: 10vh;
-
-    }
-
-    .container-registration{
-        height: 150vh;
-    }
-
-    .container-registration > .user_form{
-        padding-top: 0;
-        margin-bottom: 20vh;
-        width: 95vw;
-    }
-
-    .container-registration > .user_form > input{
-        width: 95%;
-    }
-
-
-    .statute_form > div{
-        display: flex;
-        flex-direction: row;
-        width: 95%;
-    }
-
-    .user_form > button{
-        width: 70%;
-    }
-
-    .container-quotation > div > .quotation_form{
-        grid-gap: 0.4em;
-        padding: 0.1em;
-        margin: 0;
-
-    }
-
-    div > .quotation_form > li {
-        width: 60%;
-        height: 60%;
-        justify-self: center;
-    }
-
-    .container-quotation > div > .quotation_form > li > input{
-        font-size: 0.4em;
-    }
-
-    .result > button{
-        width: 30vw;
-    }
+form.login > h1 {
+    font-size: 2.1em;
 }
+
+form.login > div.imput_holder{
+    margin: 1em 1em 0 1em;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+form.login > div.extra {
+    height: 35vh;
+}
+
+input {
+    height: 5vh;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    color: #555;
+    font-size: 1em;
+    width: 95%;
+    line-height: 1.5em;
+}
+
+.separator {
+    border-left: 3px solid #555;
+    height: 65vh;
+}
+
+form.login > button {
+    border: 1px solid #fff;
+    background-color: #0082dd;
+    border-radius: 1em;
+    margin-top: 1em;
+    text-align: center;
+    letter-spacing: 0.72px;
+    color: #fff;
+    padding: 1em;
+    width: 10vw;
+}
+
+form.login > button, form.login > .messages{
+    align-self: center;
+}
+
+form.login > p {
+    font-size: 0.7em;
+    padding: 1em 0;
+} 
+
+p > a {
+    font-weight: bold;
+    color: red;
+}
+
+
+/*  justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-content: center;
+    align-items: center;
+    align-self: center; */
+
+

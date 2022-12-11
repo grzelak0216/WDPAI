@@ -7,7 +7,7 @@ require_once __DIR__.'/../repository/TransportRepository.php';
 class TransportController extends AppController {
 
     const MAX_FILE_SIZE = 1024*1024;
-    const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
+    const SUPPORTED_TYPES = ['image/png', 'image/jpeg', 'image/jpg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $message = [];
@@ -42,12 +42,12 @@ class TransportController extends AppController {
 
             // TODO create new project object and save it in database
             $item = new Item(
-                $_POST['startCity'],
-                $_POST['startStreet'],
-                $_POST['startNumber'],
-                $_POST['endCity'],
-                $_POST['endStreet'],
-                $_POST['endNumber'],
+                $_POST['start_name'],
+                $_POST['start_alt'],
+                $_POST['start_long'],
+                $_POST['end_name'],
+                $_POST['end_alt'],
+                $_POST['end_long'],
                 $_POST['width'],
                 $_POST['height'],
                 $_POST['depth'],

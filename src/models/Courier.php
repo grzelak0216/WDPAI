@@ -144,7 +144,4 @@ class Courier {
         return $this->id;
     }
 
-
-
-
 }

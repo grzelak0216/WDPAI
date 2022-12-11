@@ -1,14 +1,12 @@
 <?php
 
 class Item {
-
-    private $startCity;
-    private $startStreet;
-    private $startNumber;
-
-    private $endCity;
-    private $endStreet;
-    private $endNumber;
+    private $startName;
+    private $startAlt;
+    private $startLong;
+    private $endName;
+    private $endAlt;
+    private $endLong;
 
     private $width;
     private $height;
@@ -27,12 +25,12 @@ class Item {
 
 
     public function __construct(
-        $startCity,
-        $startStreet,
-        $startNumber,
-        $endCity,
-        $endStreet,
-        $endNumber,
+        $startName,
+        $startAlt,
+        $startLong,
+        $endName,
+        $endAlt,
+        $endLong,
         $width,
         $height,
         $depth,
@@ -48,12 +46,12 @@ class Item {
         $id = null)
 
     {
-        $this->startCity = $startCity;
-        $this->startStreet = $startStreet;
-        $this->startNumber = $startNumber;
-        $this->endCity = $endCity;
-        $this->endStreet = $endStreet;
-        $this->endNumber = $endNumber;
+        $this->startName = $startName;
+        $this->startAlt = $startAlt;
+        $this->startLong = $startLong;
+        $this->endName = $endName;
+        $this->endAlt = $endAlt;
+        $this->endLong = $endLong;
         $this->width = $width;
         $this->height = $height;
         $this->depth = $depth;
@@ -69,35 +67,34 @@ class Item {
         $this->id = $id;
     }
 
-
-    public function getStartCity(): string
+    public function getStartName()
     {
-        return $this->startCity;
+        return $this->startName;
     }
 
-    public function getStartStreet(): string
+    public function getStartAlt()
     {
-        return $this->startStreet;
+        return $this->startAlt;
     }
 
-    public function getStartNumber(): string
+    public function getStartLong()
     {
-        return $this->startNumber;
+        return $this->startLong;
     }
 
-    public function getEndCity(): string
+    public function getEndName()
     {
-        return $this->endCity;
+        return $this->endName;
     }
 
-    public function getEndStreet(): string
+    public function getEndAlt()
     {
-        return $this->endStreet;
+        return $this->endAlt;
     }
 
-    public function getEndNumber(): string
+    public function getEndLong()
     {
-        return $this->endNumber;
+        return $this->endLong;
     }
 
     public function getWidth(): int
@@ -164,89 +161,4 @@ class Item {
     {
         return $this->creatorSurname;
     }
-
-    public function setStartCity(string $startCity)
-    {
-        $this->startCity = $startCity;
-    }
-
-    public function setStartStreet(string $startStreet)
-    {
-        $this->startStreet = $startStreet;
-    }
-
-    public function setStartNumber(string $startNumber)
-    {
-        $this->startNumber = $startNumber;
-    }
-
-    public function setEndCity(string $endCity)
-    {
-        $this->endCity = $endCity;
-    }
-
-    public function setEndStreet(string $endStreet)
-    {
-        $this->endStreet = $endStreet;
-    }
-
-    public function setEndNumber(string $endNumber)
-    {
-        $this->endNumber = $endNumber;
-    }
-
-    public function setWidth(int $width)
-    {
-        $this->width = $width;
-    }
-
-    public function setHeight(int $height)
-    {
-        $this->height = $height;
-    }
-
-    public function setDepth(int $depth)
-    {
-        $this->depth = $depth;
-    }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
-    }
-
-    public function setType(string $type)
-    {
-        $this->type = $type;
-    }
-
-    public function setPayment(int $payment)
-    {
-        $this->payment = $payment;
-    }
-
-    public function setTime(\Cassandra\Date $time)
-    {
-        $this->time = $time;
-    }
-
-    public function setPassengers(int $passengers)
-    {
-        $this->passengers = $passengers;
-    }
-
-    public function setFile(string  $file)
-    {
-        $this->file = $file;
-    }
-
-    public function setDescription(string $description)
-    {
-        $this->description = $description;
-    }
-
-
-
-
-
 }

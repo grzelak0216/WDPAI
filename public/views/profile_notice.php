@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/style_notice.css">
-    <link rel="stylesheet" type="text/css" href="public/css/bars.css">
-    <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bbd5fb75aa.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
     <title>PROJECTS</title>
 </head>
@@ -15,7 +15,7 @@
 
     <?php include "header_bar.php"; ?>
 
-    <div class="container-profile">
+    <main class="wrapper wallpaper profile">
 
         <?php
         $user_array = json_decode($_COOKIE['user'], true);
@@ -27,17 +27,19 @@
         <div class="profile_info">
             <div class="curier">
                 <span><i class="fas fa-user-circle"></i> <?php echo $logUsers->getName() ?> <?php echo $logUsers->getSurname() ?></span>
-                <span><b>Wykonane zlecenia:</b> <?php echo $logUsers->getOrderNumber() ?></span>
             </div>
             <div class="contakt">
                 <span><b>Adres e-mail:</b> <?php echo $logUsers->getEmail() ?></span>
                 <span><b>Numer telefonu:</b> <?php echo $logUsers->getPhone() ?></span>
             </div>
+            <div>
+                <span><b>Wykonane zlecenia:</b> <?php echo $logUsers->getOrderNumber() ?></span>
+            </div>
         </div>
 
         <div class="notices">
             <span><h3>Ogłoszenia przewozu:</h3></span>
-            <section class="item">
+            <section class="item scroll_b">
                 <?php foreach($notices[1] as $item): ?>
                     <div id="<?= $item->getId(); ?>">
                         <div class="order">
@@ -53,7 +55,7 @@
                 <?php endforeach; ?>
             </section>
             <span><h3>Ogłoszenia kurierskie:</h3></span>
-            <section class="courier">
+            <section class="courier scroll_b">
                 <?php foreach($notices[0] as $courier): ?>
                     <div id="<?= $courier->getId(); ?>">
                         <div class="order">
@@ -73,7 +75,7 @@
                 <?php endforeach; ?>
             </section>
         </div>
-    </div>
+    </main>
 
     <?php include "footer_bar.php"; ?>
 </body>

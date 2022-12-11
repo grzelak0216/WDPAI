@@ -3,19 +3,15 @@ const optionContainer = document.querySelector('.option-container');
 const burgerButton = document.getElementById('burger');
 
 burgerButton.addEventListener('click', () => {
-    optionContainer.classList.toggle('active');
+    optionContainer.classList.toggle('active_nav');
 })
 
-const optionSearch = document.querySelector('.option-search');
-const searchButton = document.getElementById('search');
+const popupContainer = document.querySelector('.popup');
+const bgContainer = document.querySelector('.t2');
+const popupButton = document.getElementById('popupbt');
 
-searchButton.addEventListener('click', () => {
-    optionSearch.classList.toggle('active');
-})
 
-const optionAdd = document.querySelector('.option-add');
-const addButton = document.getElementById('add');
-
-addButton.addEventListener('click', () => {
-    optionAdd.classList.toggle('active');
+popupButton.addEventListener('click', () => {
+    popupContainer.classList.toggle('visable');
+    bgContainer.classList.toggle('blur');
 })

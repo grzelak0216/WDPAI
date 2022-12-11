@@ -22,12 +22,12 @@ class TransportRepository extends Repository
         }
 
         return new Item(
-            $item['start_city'],
-            $item['start_street'],
-            $item['start_number'],
-            $item['end_city'],
-            $item['end_street'],
-            $item['end_number'],
+            $item['start_name'],
+            $item['start_alt'],
+            $item['start_long'],
+            $item['end_name'],
+            $item['end_alt'],
+            $item['end_long'],
             $item['width'],
             $item['height'],
             $item['depth'],
@@ -60,12 +60,12 @@ class TransportRepository extends Repository
         }
 
         return new Item(
-            $item['start_city'],
-            $item['start_street'],
-            $item['start_number'],
-            $item['end_city'],
-            $item['end_street'],
-            $item['end_number'],
+            $item['start_name'],
+            $item['start_alt'], 
+            $item['start_long'],
+            $item['end_name'],
+            $item['end_alt'],
+            $item['end_long'],
             $item['width'],
             $item['height'],
             $item['depth'],
@@ -78,14 +78,14 @@ class TransportRepository extends Repository
             $item['description'],
             $item['name'],
             $item['surname'],
-            $item['ID_transport_notice'],
+            $item['ID_transport_notice']
         );
     }
 
     public function addTransportNotice(Item $item): void
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO transport_notices (start_city, start_street, start_number, end_city, end_street, end_number, width, name, type, payment, time, passengers, description, "ID_creator", height, depth, image)
+            INSERT INTO transport_notices (start_name, start_alt, start_long, end_name, end_alt, end_long, width, name, type, payment, time, passengers, description, "ID_creator", height, depth, image)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
@@ -93,12 +93,12 @@ class TransportRepository extends Repository
         $assignedById = $_COOKIE["userID"];
 
         $stmt->execute([
-            $item->getStartCity(),
-            $item->getStartStreet(),
-            $item->getStartNumber(),
-            $item->getEndCity(),
-            $item->getEndStreet(),
-            $item->getEndNumber(),
+            $item->getStartName(),
+            $item->getStartAlt(),
+            $item->getStartLong(),
+            $item->getEndName(),
+            $item->getEndAlt(),
+            $item->getEndLong(),
             $item->getWidth (),
             $item->getName(),
             $item->getType(),
@@ -126,12 +126,12 @@ class TransportRepository extends Repository
 
         foreach ($items as $item) {
             $result[] = new Item(
-                $item['start_city'],
-                $item['start_street'],
-                $item['start_number'],
-                $item['end_city'],
-                $item['end_street'],
-                $item['end_number'],
+                $item['start_name'],
+                $item['start_alt'],
+                $item['start_long'],
+                $item['end_name'],
+                $item['end_alt'],
+                $item['end_long'],
                 $item['width'],
                 $item['height'],
                 $item['depth'],

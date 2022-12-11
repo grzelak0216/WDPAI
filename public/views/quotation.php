@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
-    <script src="https://kit.fontawesome.com/ac9bb0216f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bbd5fb75aa.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/quotation.js" defer></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
     <title>PROJECTS</title>

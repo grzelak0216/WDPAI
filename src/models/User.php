@@ -75,5 +75,4 @@ class User {
         $this->orderNumber = $orderNumber;
     }
 
-
 }

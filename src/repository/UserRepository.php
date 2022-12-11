@@ -118,12 +118,12 @@ class UserRepository extends Repository
         $resultItem = [];
         foreach ($items as $item) {
             $resultItem[] = new Item(
-                $item['start_city'],
-                $item['start_street'],
-                $item['start_number'],
-                $item['end_city'],
-                $item['end_street'],
-                $item['end_number'],
+                $item['start_name'],
+                $item['start_alt'],
+                $item['start_long'],
+                $item['end_name'],
+                $item['end_alt'],
+                $item['end_long'],
                 $item['width'],
                 $item['height'],
                 $item['depth'],

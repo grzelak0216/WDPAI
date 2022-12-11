@@ -1,119 +1,44 @@
-const search1 = document.querySelector('input[placeholder="Miasto poczatkowe"]');
-const search2 = document.querySelector('input[placeholder="Miasto koncowe"]');
-const transportContainer = document.querySelector(".orders1");
-const courierContainer = document.querySelector(".orders2");
+const searchStart1 = document.querySelector('input[placeholder="START ALT"]')
+const searchStart2 = document.querySelector('input[placeholder="START LONG"]')
+const searchEnd1 = document.querySelector('input[placeholder="END ALT"]')
+const searchEnd2 = document.querySelector('input[placeholder="END LONG"]')
+const searchExtra = document.querySelector('input[placeholder="Dodatkowa trasa"]')
+const projectController = document.querySelector(".couriers-travels")
+const popupContainer = document.querySelector('.popup');
+const bgContainer = document.querySelector('.t2');
+const popupButton = document.getElementById('searcherbt');
 
+popupButton.addEventListener('click', function(event) {
+    event.preventDefault();
 
-search2.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
+    const dataStart1 = {searchStart1: this.value};
+    const dataStart2 = {searchStart2: this.value};
+    const dataEnd1 = {searchEnd1: this.value};
+    const dataEnd2 = {searchEnd2: this.value};
+    const dataExtra = {searchExtra: this.value};
 
-        const data = {search1: search1.value, search2: search2.value};
+    fetch("/search", {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        }).then(function (response) {
+            return response.json();
+        }).then(function (projects) {
+            projectContainer.innerHTML = "";
+            loadProjects(projects)
+        });
 
-        if (transportContainer != null){
-
-            fetch("/search", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (items) {
-                transportContainer.innerHTML = "";
-                loadTransportNotices(items)
-            });
-
-        } else {
-
-            fetch("/search", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (couriers) {
-                courierContainer.innerHTML = "";
-                loadCourierNotices(couriers)
-            });
-
-        }
-    }
-});
-
-search1.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-
-        const data = {search1: search1.value, search2: search2.value};
-
-        if (transportContainer != null){
-
-            fetch("/search", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (items) {
-                transportContainer.innerHTML = "";
-                loadTransportNotices(items)
-            });
-
-        } else {
-
-            fetch("/search", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (couriers) {
-                courierContainer.innerHTML = "";
-                loadCourierNotices(couriers)
-            });
-
-        }
-    }
-});
-
-function loadTransportNotices(items) {
-    items.forEach(item => {
-        createTransportNotice(item);
-    });
-}
+    popupContainer.classList.toggle('visable');
+    bgContainer.classList.toggle('blur');
+})
 
 function loadCourierNotices(couriers) {
     couriers.forEach(courier => {
+        console.log(courier)
         createCourierNotice(courier);
     });
-}
-
-function createTransportNotice(item) {
-    const template = document.querySelector("#transport_notice-template");
-    const clone = template.content.cloneNode(true);
-    const div = clone.querySelector("div");
-    div.id = item.ID_transport_notice;
-    const image = clone.querySelector("img");
-    image.src = `/public/uploads/${item.image}`;
-    const startCity = clone.querySelector(".startCity");
-    const endCity = clone.querySelector(".endCity");
-    const type = clone.querySelector(".type");
-    const payment = clone.querySelector(".payment");
-
-    startCity.textContent += item.start_city;
-    endCity.textContent += item.end_city;
-    type.textContent += item.type;
-    payment.textContent += item.payment;
-
-    transportContainer.appendChild(clone);
 }
 
 function createCourierNotice(courier) {
