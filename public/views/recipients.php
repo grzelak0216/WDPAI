@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/bars.css">
     <script src="https://kit.fontawesome.com/bbd5fb75aa.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/bars_buttons.js" defer></script>
+    <script type="text/javascript" src="./public/js/recipients.js" defer></script>
     <title>PROJECTS</title>
 </head>
 
@@ -25,8 +26,6 @@
         <button type="submit">Select</button>
     </form>
 
-    <!-- JavaScript file -->
-    <script src="recipients.js"></script>
 </main>
 
 <?php include "footer_bar.php"; ?>

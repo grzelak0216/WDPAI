@@ -4,15 +4,16 @@ const recipientSelect = document.getElementById('recipient-select');
 
 // Load options for recipient selection dropdown
 window.addEventListener('load', () => {
-    fetch('api/users.php')
+    fetch('./public/api/users.php')
         .then(response => response.json())
         .then(users => {
             // Loop through users
             users.forEach(user => {
                 // Create option element
                 const option = document.createElement('option');
-                option.value = user.id;
-                option.text = user.username;
+                console.log(user)
+                option.value = user.ID_user;
+                option.text = user.email;
                 // Append option to select element
                 recipientSelect.appendChild(option);
             });
@@ -27,5 +28,5 @@ recipientForm.addEventListener('submit', e => {
     const recipientId = recipientSelect.value;
 
     // Redirect to index.html with recipient ID as URL parameter
-    window.location.href = `index.html?recipient_id=${recipientId}`;
+    window.location.href = `chat?hidden=${recipientId}`;
 });

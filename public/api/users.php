@@ -1,10 +1,10 @@
 <?php
 
 // Include model file
-include_once '../models/User.php';
+include_once '../../src/controllers/SecurityController.php';
 
 // Get all users
-$users = User::getAll();
+$users = SecurityController::getAll();
 
 // Return users as JSON
 header('Content-Type: application/json');

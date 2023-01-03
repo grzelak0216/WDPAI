@@ -109,4 +109,10 @@ class SecurityController extends AppController {
         $notices = $this->userRepository->getNotices($id);
         $this->render('profile_notice', ['notices' => $notices]);
     }
+
+    public function getAll() {
+        $userRepository = new UserRepository();
+        return $userRepository->getAll();
+    }
+
 }

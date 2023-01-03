@@ -19,4 +19,14 @@ class DefaultController extends AppController {
         $this->render('quotation');
     }
 
+    public function chat()
+    {
+        $this->render('chat');
+    }
+
+    public function recipients()
+    {
+        $this->render('recipients');
+    }
+
 }

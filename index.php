@@ -25,5 +25,10 @@ Router::post('dropCourierNoticeToUser', 'CourierController');
 Router::post('removeTransportNotice', 'TransportController');
 Router::post('removeCourierNotice', 'CourierController');
 
+Router::get('recipients', 'DefaultController');
+Router::get('chat', 'DefaultController');
+//Router::post('recipients', 'DefaultController');
+//Router::post('chat', 'DefaultController');
+
 
 Router::run($path);

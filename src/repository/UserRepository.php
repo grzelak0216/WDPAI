@@ -36,6 +36,11 @@ class UserRepository extends Repository
         );
     }
 
+    public function getAll() {
+        $stmt = $this->database->connect()->query('SELECT * FROM users');
+        return $stmt->fetchAll();
+    }
+
     public function addUser(User $user)
     {
         $stmt = $this->database->connect()->prepare('

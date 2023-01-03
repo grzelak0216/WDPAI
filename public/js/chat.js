@@ -6,7 +6,7 @@ const messages = document.getElementById('messages');
 
 // Load options for recipient selection dropdown
 window.addEventListener('load', () => {
-    fetch('api/users.php')
+    fetch('./public/api/users.php')
         .then(response => response.json())
         .then(users => {
             // Loop through users
@@ -30,7 +30,7 @@ messageForm.addEventListener('submit', e => {
     const message = messageInput.value;
 
     // Send POST request to server to send message
-    fetch('api/send-message.php', {
+    fetch('./public/api/send-message.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
