@@ -18,6 +18,7 @@ function NoticeToUser() {
             console.log(id);
         });
     }
+    window.location.href = 'http://localhost:8080/profile_notice'
 }
 
 addButtons.forEach(button => button.addEventListener("click", NoticeToUser));

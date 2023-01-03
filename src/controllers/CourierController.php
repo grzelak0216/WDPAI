@@ -65,22 +65,24 @@ class CourierController extends AppController {
 
     public function search()
     {
-        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
-        if ($contentType === "application/json") {
-            $content = trim(file_get_contents("php://input"));
-            $decoded = json_decode($content, true);
-
-            header('Content-type: application/json');
-            http_response_code(200);
-
-            echo json_encode($this->courierRepository->getProjectByCities($decoded['search1'], $decoded['search2']));
-        }
+        echo json_encode($this->courierRepository->getProjectByCities());
     }
 
     public function addCourierNoticeToUser(int $ci_id)
     {
         $this->courierRepository->addCourierNotificationToUser($ci_id);
+        http_response_code(200);
+    }
+
+    public function dropCourierNoticeToUser(int $ci_id)
+    {
+        $this->courierRepository->dropCourierNotificationToUser($ci_id);
+        http_response_code(200);
+    }
+
+    public function removeCourierNotice(int $ci_id)
+    {
+        $this->courierRepository->rmCourierNotification($ci_id);
         http_response_code(200);
     }
 }

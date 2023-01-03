@@ -20,7 +20,10 @@ Router::post('addTransportNotice', 'TransportController');
 Router::post('addCourierNotice', 'CourierController');
 Router::post('login', 'SecurityController');
 Router::post('registration', 'SecurityController');
-
+Router::post('dropTransportNoticeToUser', 'TransportController');
+Router::post('dropCourierNoticeToUser', 'CourierController');
+Router::post('removeTransportNotice', 'TransportController');
+Router::post('removeCourierNotice', 'CourierController');
 
 
 Router::run($path);

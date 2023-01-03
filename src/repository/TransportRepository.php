@@ -40,6 +40,7 @@ class TransportRepository extends Repository
             $item['description'],
             $item['name'],
             $item['surname'],
+            $item['ID_creator'],
             $item['ID_transport_notice']
         );
     }
@@ -78,6 +79,7 @@ class TransportRepository extends Repository
             $item['description'],
             $item['name'],
             $item['surname'],
+            $item['ID_creator'],
             $item['ID_transport_notice']
         );
     }
@@ -100,7 +102,7 @@ class TransportRepository extends Repository
             $item->getEndAlt(),
             $item->getEndLong(),
             $item->getWidth (),
-            $item->getName(),
+            $item->getNameItem(),
             $item->getType(),
             $item->getPayment(),
             $item->getTime(),
@@ -144,6 +146,7 @@ class TransportRepository extends Repository
                 $item['description'],
                 $item['name'],
                 $item['surname'],
+                $item['ID_creator'],
                 $item['ID_transport_notice']
             );
         }
@@ -190,5 +193,26 @@ class TransportRepository extends Repository
             $_COOKIE["userID"],
             $ti_id
         ]);
+    }
+
+    public function dropTransportNotificationToUser(int $ti_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM users_transport_notices
+            WHERE "ID_transport_notices" = :id AND "ID_user" = :user
+        ');
+        $stmt->bindParam(':id', $ti_id, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $_COOKIE["userID"], PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function rmTransportNotification(int $ti_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM transport_notices
+            WHERE "ID_transport_notice" = :id
+        ');
+        $stmt->bindParam(':id', $ti_id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

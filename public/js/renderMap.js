@@ -17,7 +17,7 @@ async function getRoute(map, start, end) {
     );
     const json = await query.json();
 
-    console.log(start)
+    // console.log(start)
 
     if (json.message) {
         console.error('ERROR for ' + start[0] + ',' + start[1] + ' ' + json.message);
@@ -165,38 +165,3 @@ const renderMapOnAddCourierNotice = () => {
     renderMapWithGeocoder('map-end-city', true);
 }
 
-async function getDistance () {
-    pointA = ['49.5493865', '21.850839']
-    pointB = ['50.052', '19.939']
-    pointC = ['50.066', '19.95']
-    pointD = ['50.06667', '19.95']
-
-    const before = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointA[1]},${pointA[0]};${pointB[1]},${pointB[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
-        { method: 'GET' }
-    );
-    const json1 = await before.json();
-
-    const packageRoute = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointB[1]},${pointB[0]};${pointC[1]},${pointC[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
-        { method: 'GET' }
-    );
-    const json2 = await packageRoute.json();
-
-    const after = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointC[1]},${pointC[0]};${pointD[1]},${pointD[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
-        { method: 'GET' }
-    );
-    const json3 = await after.json();
-
-    const baseRoute = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointA[1]},${pointA[0]};${pointD[1]},${pointD[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
-        { method: 'GET' }
-    );
-    const josn4 = await baseRoute.json();
-
-    const routeDistance = json1.routes[0].distance  + json2.routes[0].distance + json3.routes[0].distance;
-    
-    console.log(routeDistance)    
-    console.log(josn4.routes[0].distance)    
-}

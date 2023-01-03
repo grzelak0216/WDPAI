@@ -21,6 +21,7 @@ class Item {
     private $description;
     private $creatorName;
     private $creatorSurname;
+    private $creatorID;
     private $id;
 
 
@@ -43,6 +44,7 @@ class Item {
         $description,
         $creatorName,
         $creatorSurname,
+        $creatorID,
         $id = null)
 
     {
@@ -65,6 +67,12 @@ class Item {
         $this->creatorName = $creatorName;
         $this->creatorSurname = $creatorSurname;
         $this->id = $id;
+        $this->creatorID = $creatorID;
+    }
+
+    public function getCreatorID()
+    {
+        return $this->creatorID;
     }
 
     public function getStartName()
@@ -112,7 +120,7 @@ class Item {
         return $this->depth;
     }
 
-    public function getName(): string
+    public function getNameItem(): string
     {
         return $this->name;
     }

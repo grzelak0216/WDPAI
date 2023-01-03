@@ -99,6 +99,19 @@ class UserRepository extends Repository
         return $user['ID_user'];
     }
 
+    public function getAdmin(string $email): bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users WHERE email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user['admin'];
+    }
+
     public function removeUserCookies()
     {
         $cookie_name = "user";
@@ -136,6 +149,7 @@ class UserRepository extends Repository
                 $item['description'],
                 $item['name'],
                 $item['surname'],
+                $item['ID_creator'],
                 $item['ID_transport_notice']
             );
         }
@@ -167,6 +181,7 @@ class UserRepository extends Repository
                 $courier['car_registration'],
                 $courier['name'],
                 $courier['surname'],
+                $courier['ID_creator'],
                 $courier['ID_courier_notices']
             );
         }

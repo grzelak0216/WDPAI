@@ -68,7 +68,7 @@
                             <span><i class="fas fa-coins"> <b>Wymiary:</b> <?= $item->getWidth(); ?> x <?= $item->getHeight(); ?> x <?= $item->getDepth(); ?> cm</i></span>
                             <span><i class="fas fa-user-circle"></i> <b>Author:</b> <?=$item->getCreatorName(); ?> <?= $item->getCreatorSurname();?></span>
                         </div>
-                        <span><a class="check" href="http://localhost:8080/info_item_notice?hidden=<?= $item->getId(); ?>">Sprawdz</a></span>
+                        <span><a class="check" href="http://localhost:8080/info_transport_notice?hidden=<?= $item->getId(); ?>">Sprawdz</a></span>
                     </div>
                 <?php endforeach; ?>
         </section>

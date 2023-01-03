@@ -19,6 +19,7 @@ class Courier {
     private $registration;
     private $creatorName;
     private $creatorSurname;
+    private $creatorID;
     private $id;
 
     public function __construct(
@@ -38,6 +39,7 @@ class Courier {
         $registration,
         $creatorName,
         $creatorSurname,
+        $creatorID,
         $id = null)
     {
         $this->startName = $startName;
@@ -57,6 +59,12 @@ class Courier {
         $this->creatorName = $creatorName;
         $this->creatorSurname = $creatorSurname;
         $this->id = $id;
+        $this->creatorID = $creatorID;
+    }
+
+    public function getCreatorID()
+    {
+        return $this->creatorID;
     }
 
     public function getDeadline(): string

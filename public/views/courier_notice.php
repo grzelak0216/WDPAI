@@ -57,7 +57,7 @@
 
             <div>
                 <label><i class="fas fa-car"></i> Dodatkowa trasa</label>
-                <input name="extra" type="number" placeholder="Dodatkowa trasa">
+                <input id="extrar" name="extra" type="number" placeholder="Dodatkowa trasa">
             </div>
 
             <button id="searcherbt" type="submit" class="button">Sprawdz</button>
@@ -81,13 +81,13 @@
                         <div id='map-<?php echo $index; ?>'></div>
                         <?php $index = $index+1; ?>
                         <div class="order-info">
-                            <span><i class="fas fa-city"></i> <b>Start:</b> <?= $courier->getStartName();?></i></span>
-                            <span><i class="fas fa-city"></i> <b>Koniec:</b> <?= $courier->getEndName();?></span>
-                            <span><i class="fas fa-hourglass-half"></i> <b>Data:</b> <?= $courier->getDeadline(); ?></span>
-                            <span><i class="fas fa-luggage-cart"></i> <b>Maksymalny rozmiar:</b> <?= $courier->getMaxSize(); ?> cm</span>
-                            <span><i class="fas fa-route"></i></i> <b>Dodatkowa trasa:</b> +<?= $courier->getExtraRoad(); ?>km</span>
-                            <span><i class="fas fa-car-side"></i></i> <b>Auto:</b> <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></span>
-                            <span><i class="fas fa-user-circle"></i> <b>Author:</b> <?=$courier->getCreatorName(); ?> <?= $courier->getCreatorSurname();?></span>
+                            <span id="facity1"><i class="fas fa-city"></i> <b>Start:</b> <?= $courier->getStartName();?></span>
+                            <span id="facity2"><i class="fas fa-city"></i> <b>Koniec:</b> <?= $courier->getEndName();?></span>
+                            <span id="facity3"><i class="fas fa-hourglass-half"></i> <b>Data:</b> <?= $courier->getDeadline(); ?></span>
+                            <span id="facity4"><i class="fas fa-luggage-cart"></i> <b>Maksymalny rozmiar:</b> <?= $courier->getMaxSize(); ?> cm</span>
+                            <span id="facity5"><i class="fas fa-route"></i></i> <b>Dodatkowa trasa:</b> +<?= $courier->getExtraRoad(); ?>km</span>
+                            <span id="facity6"><i class="fas fa-car-side"></i></i> <b>Auto:</b> <?= $courier->getBrand(); ?> <?= $courier->getModel(); ?> <?= $courier->getYear(); ?></span>
+                            <span id="facity7"><i class="fas fa-user-circle"></i> <b>Author:</b> <?=$courier->getCreatorName(); ?> <?= $courier->getCreatorSurname();?></span>
                         </div>
                         <span><a class="check" href="http://localhost:8080/info_courier_notice?hidden=<?= $courier->getId(); ?>">Sprawdz</a></span>
                     </div>
@@ -99,7 +99,33 @@
     <?php include "footer_bar.php"; ?>
 </body>
 
+<template id="courier-template">
+    <div id=""
+         class="courier-single"
+         data-start-alt=""
+         data-start-long=""
+         data-end-alt=""
+         data-end-long=""
+    >
+        <div id='' style="height: 250px; width: 100%;"></div>
+        <div class="order-info">
+            <span id="facity1"><i class="fas fa-city"></i> <b>Start:</b> </i></span>
+            <span id="facity2"><i class="fas fa-city"></i> <b>Koniec:</b> </span>
+            <span id="facity3"><i class="fas fa-hourglass-half"></i> <b>Data:</b></span>
+            <span id="facity4"><i class="fas fa-luggage-cart"></i> <b>Maksymalny rozmiar:</b> </span>
+            <span id="facity5"><i class="fas fa-route"></i> <b>Dodatkowa trasa:</b> </span>
+            <span id="facity6"><i class="fas fa-car-side"></i> <b>Auto:</b></span>
+        </div>
+        <span><a id="template-link" class="check" href="http://localhost:8080/info_courier_notice?hidden=">Sprawdz</a></span>
+    </div>
 
+    <script>
+        (function() {
+            createMapOfTravels();
+        })();
+    </script>
+
+</template>
 
 <script type="text/javascript" src="./public/js/renderMap.js"></script>
 <script>

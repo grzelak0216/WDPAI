@@ -110,7 +110,15 @@ class TransportController extends AppController {
         http_response_code(200);
     }
 
+    public function dropTransportNoticeToUser(int $ti_id)
+    {
+        $this->transportRepository->dropTransportNotificationToUser($ti_id);
+        http_response_code(200);
+    }
 
-
-
+    public function removeTransportNotice(int $ti_id)
+    {
+        $this->transportRepository->rmTransportNotification($ti_id);
+        http_response_code(200);
+    }
 }

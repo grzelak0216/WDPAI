@@ -1,21 +1,17 @@
-const searchStart1 = document.querySelector('input[placeholder="START ALT"]')
-const searchStart2 = document.querySelector('input[placeholder="START LONG"]')
-const searchEnd1 = document.querySelector('input[placeholder="END ALT"]')
-const searchEnd2 = document.querySelector('input[placeholder="END LONG"]')
-const searchExtra = document.querySelector('input[placeholder="Dodatkowa trasa"]')
+const searchStart1 = document.querySelector("#map-start-city-alt")
+const searchStart2 = document.querySelector("#map-start-city-long")
+const searchEnd1 = document.querySelector("#map-end-city-alt")
+const searchEnd2 = document.querySelector("#map-end-city-long")
+const searchExtra = document.querySelector("#extrar")
 const projectController = document.querySelector(".couriers-travels")
-const popupContainer = document.querySelector('.popup');
-const bgContainer = document.querySelector('.t2');
-const popupButton = document.getElementById('searcherbt');
+const serpopupContainer = document.querySelector('.popup');
+const serbgContainer = document.querySelector('.t2');
+const serpopupButton = document.getElementById('searcherbt');
 
-popupButton.addEventListener('click', function(event) {
+serpopupButton.addEventListener('click', function(event) {
     event.preventDefault();
 
-    const dataStart1 = {searchStart1: this.value};
-    const dataStart2 = {searchStart2: this.value};
-    const dataEnd1 = {searchEnd1: this.value};
-    const dataEnd2 = {searchEnd2: this.value};
-    const dataExtra = {searchExtra: this.value};
+    const data = "Analizator zbierznosci tras";
 
     fetch("/search", {
         method: "POST",
@@ -26,45 +22,112 @@ popupButton.addEventListener('click', function(event) {
         }).then(function (response) {
             return response.json();
         }).then(function (projects) {
-            projectContainer.innerHTML = "";
-            loadProjects(projects)
+            projectController.innerHTML = "";
+            loadCourierNotices(projects)
         });
 
-    popupContainer.classList.toggle('visable');
-    bgContainer.classList.toggle('blur');
+    serpopupContainer.classList.toggle('visable');
+    serbgContainer.classList.toggle('blur');
 })
 
+let map = 0
+
 function loadCourierNotices(couriers) {
+    
+    console.log(couriers)
     couriers.forEach(courier => {
-        console.log(courier)
-        createCourierNotice(courier);
+        // if (routeAnalise(courier)) {
+        //     console.log(courier)
+        //     createCourier(courier);
+        // }
+
+        waitfor(courier);
     });
 }
 
-function createCourierNotice(courier) {
-    const template = document.querySelector("#courier_notice-template");
-    const clone = template.content.cloneNode(true);
-    const div = clone.querySelector("div");
-    div.id = courier.ID_courier_notice;
+async function waitfor(courier) {
+    const param = await routeAnalise(courier)
+    if (param) {
+        createCourier(courier);
+    }
+}
 
-    const startCity = clone.querySelector(".startCity");
-    const endCity = clone.querySelector(".endCity");
+async function routeAnalise(courier) {
+    const pointB = [searchStart1.value, searchStart2.value];
+    const pointC = [searchEnd1.value, searchEnd2.value];
+    const pointA = [courier.start_alt, courier.start_long];
+    const pointD = [courier.end_alt, courier.end_long];
 
-    const date = clone.querySelector(".date");
-    const extra_route = clone.querySelector(".extra_route");
-    const max_size = clone.querySelector(".max_size");
-    const brand = clone.querySelector(".brand");
-    const model = clone.querySelector(".model");
-    const year = clone.querySelector(".year");
+    const before = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointA[1]},${pointA[0]};${pointB[1]},${pointB[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+        { method: 'GET' }
+    );
+    const json1 = await before.json();
 
-    startCity.textContent += courier.start_city;
-    endCity.textContent += courier.end_city;
-    date.textContent += courier.date;
-    extra_route.textContent += courier.extra_route;
-    max_size.textContent += courier.max_size;
-    brand.textContent += courier.car_brand;
-    model.textContent += courier.car_model;
-    year.textContent += courier.car_year;
+    const packageRoute = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointB[1]},${pointB[0]};${pointC[1]},${pointC[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+        { method: 'GET' }
+    );
+    const json2 = await packageRoute.json();
 
-    courierContainer.appendChild(clone);
+    const after = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointC[1]},${pointC[0]};${pointD[1]},${pointD[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+        { method: 'GET' }
+    );
+    const json3 = await after.json();
+
+    const baseRoute = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/cycling/${pointA[1]},${pointA[0]};${pointD[1]},${pointD[0]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+        { method: 'GET' }
+    );
+    const josn4 = await baseRoute.json();
+    const routeDistance = json1.routes[0].distance  + json2.routes[0].distance + json3.routes[0].distance;
+
+    console.log(routeDistance - josn4.routes[0].distance)
+    console.log(courier.extra_road * 1000)
+
+    const result = await ( routeDistance - josn4.routes[0].distance < courier.extra_road * 1000)
+    
+    console.log(result)
+
+    return result
+}
+
+const container = document.querySelector('#couriers-travels')
+
+function createCourier(courier){
+    
+    const template = document.querySelector('#courier-template');
+    const clonedTemplate = template.content.cloneNode(true);
+
+    const divCourierSingle = clonedTemplate.querySelector('.courier-single');
+    divCourierSingle.id = "courier-single-" + map;
+
+    divCourierSingle.dataset.startAlt = courier.start_alt;
+    divCourierSingle.dataset.startLong = courier.start_long;
+    divCourierSingle.dataset.endAlt = courier.end_alt;
+    divCourierSingle.dataset.endLong = courier.end_long;
+
+
+    const childOfDivHigher = divCourierSingle.firstElementChild;
+    childOfDivHigher.id = "map-" + map;
+
+    const courierfa1 = clonedTemplate.querySelector('#facity1');
+    courierfa1.textContent += courier.start_name;
+    const courierfa2 = clonedTemplate.querySelector('#facity2');
+    courierfa2.textContent += courier.end_name;
+    const courierfa3 = clonedTemplate.querySelector('#facity3');
+    courierfa3.textContent += courier.date;
+    const courierfa4 = clonedTemplate.querySelector('#facity4');
+    courierfa4.textContent += courier.max_size + " cm";
+    const courierfa5 = clonedTemplate.querySelector('#facity5');
+    courierfa5.textContent += courier.extra_road + " +km";
+    const courierfa6 = clonedTemplate.querySelector('#facity6');
+    courierfa6.textContent += courier.car_brand + courier.car_model + courier.car_year;
+
+    const link = clonedTemplate.querySelector('#template-link');
+    link.href = "http://localhost:8080/info_courier_notice?hidden=" + courier.ID_courier_notices;
+
+    map +=1
+    container.appendChild(clonedTemplate);
 }

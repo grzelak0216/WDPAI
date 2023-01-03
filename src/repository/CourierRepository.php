@@ -38,6 +38,7 @@ class CourierRepository extends Repository
             $courier['car_registration'],
             $courier['name'],
             $courier['surname'],
+            $courier['ID_creator'],
             $courier['ID_courier_notices']
         );
     }
@@ -74,6 +75,7 @@ class CourierRepository extends Repository
             $courier['car_registration'],
             $courier['name'],
             $courier['surname'],
+            $courier['ID_creator'],
             $courier['ID_courier_notices']
         );
     }
@@ -137,6 +139,7 @@ class CourierRepository extends Repository
                 $courier['car_registration'],
                 $courier['name'],
                 $courier['surname'],
+                $courier['ID_creator'],
                 $courier['ID_courier_notices']
             );
         }
@@ -144,31 +147,12 @@ class CourierRepository extends Repository
         return $result;
     }
 
-    public function getProjectByCities(string $startCity, string $endCity)
+    public function getProjectByCities()
     {
-        $startCity = strtolower($startCity);
-        $endCity = strtolower($endCity);
-
-        if ($startCity == null || $endCity == null){
-            if ($startCity == null){
-                $stmt = $this->database->connect()->prepare('
-                    SELECT * FROM courier_notices WHERE LOWER(end_city) LIKE :search
-                ');
-                $stmt->bindParam(':search', $endCity, PDO::PARAM_STR);
-            } else {
-                $stmt = $this->database->connect()->prepare('
-                    SELECT * FROM courier_notices WHERE LOWER(start_city) LIKE :search
-                ');
-                $stmt->bindParam(':search', $startCity, PDO::PARAM_STR);
-            }
-            $stmt->execute();
-        } else {
-            $stmt = $this->database->connect()->prepare('
-                SELECT * FROM courier_notices WHERE LOWER(start_city) = ? AND LOWER(end_city) = ?
-            ');
-            $stmt->execute(array($startCity, $endCity));
-        }
-
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM courier_notices;
+        ');
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -184,5 +168,26 @@ class CourierRepository extends Repository
             $ti_id
         ]);
 
+    }
+
+    public function dropCourierNotificationToUser(int $ti_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM users_courier_notices
+            WHERE "ID_courier_notices" = :id AND "ID_users" = :user
+        ');
+        $stmt->bindParam(':id', $ti_id, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $_COOKIE["userID"], PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function rmCourierNotification(int $ti_id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM courier_notices
+            WHERE "ID_courier_notices" = :id
+        ');
+        $stmt->bindParam(':id', $ti_id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

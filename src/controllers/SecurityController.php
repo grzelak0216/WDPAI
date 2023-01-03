@@ -44,6 +44,11 @@ class SecurityController extends AppController {
         $cookie_value = $this->userRepository->getUserID($email);
         setcookie($cookie_name, $cookie_value, time() + (86400 * 7), "/");
 
+        if($this->userRepository->getAdmin($email)){
+            $cookie_name = "admin";
+            setcookie($cookie_name, true, time() + (28800), "/");
+        }
+
         if(!isset($_COOKIE['userID'])){
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/");

@@ -12,21 +12,23 @@
 </head>
 
 <body>
-    <?php include "header_bar.php"; ?>
+<?php include "header_bar.php"; ?>
 
-    <main>
-        <div class="start">
-            <p>Welcome to Portallo</p>
-            <p>Courier services at the lowest prices</p>
-        </div>
+<main>
+    <!-- Recipient selection form -->
+    <form id="recipient-form">
+        <!-- Recipient selection dropdown -->
+        <select id="recipient-select">
+            <!-- Options will be generated dynamically with JavaScript -->
+        </select>
+        <!-- Submit button -->
+        <button type="submit">Select</button>
+    </form>
 
-        <article class="web_advantages">
-            <i class="fas fa-coins"><b>Saving</b></i>
-            <i class="fas fa-id-card"><b>Verification</b></i>
-            <i class="fas fa-shipping-fast"><b>Delivery speed</b></i>
-        </article>
-    </main>
+    <!-- JavaScript file -->
+    <script src="recipients.js"></script>
+</main>
 
-    <?php include "footer_bar.php"; ?>
+<?php include "footer_bar.php"; ?>
 </body>
 </html>
