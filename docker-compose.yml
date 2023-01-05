@@ -18,3 +18,10 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - .:/app/
+
+  websocket:
+    build:
+      context: .
+      dockerfile: docker/websocket/Dockerfile
+    volumes:
+      - .:/app/
