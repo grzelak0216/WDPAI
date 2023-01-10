@@ -6,7 +6,7 @@ require_once __DIR__.'/../models/User.php';
 class UserRepository extends Repository
 {
 
-    public function getUser(string $email): ?User
+    public function getUserSecurity(string $email): ?User
     {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM users u LEFT JOIN users_details ud

@@ -15,38 +15,40 @@
 <body>
     <?php include "header_bar.php"; ?>
 
-    <div class="container-quotation">
-        <div>
-            <h1>Wprowadz dane</h1>
-            <ul class="quotation_form">
-                <li>
-                    <label><i class="fas fa-arrows-alt-h"><b>Szerokość:</b> </i></label>
-                    <input name="width" type="number" min="1" placeholder="Szerokość">
-                </li>
-                <li>
-                    <label><i class="fas fa-arrows-alt-v"><b>Wysokość</b> </i></label>
-                    <input name="height" type="number" min="1" placeholder="Wysokość">
-                </li>
-                <li>
-                    <label><i class="fas fa-expand-alt"><b>Głębokość:</b> </i></label>
-                    <input name="depth" type="number" min="1" placeholder="Głębokość">
-                </li>
-                <li>
-                    <label><i class="fas fa-route"><b>Długość trasy:</b> </i></label>
-                    <input name="route" type="number" min="1" placeholder="Długość trasy">
-                </li>
-            </ul>
+    <main class="wallpaper">
+        <div class="form_wrapper">
+            <div style="width: 45%; padding-left: 1em">
+                <h1>Wprowadz dane</h1>
+                <ul class="quotation_form">
+                    <li>
+                        <label><i class="fas fa-arrows-alt-h"><b>Szerokość:</b> </i></label>
+                        <input name="width" type="number" min="1" placeholder="Szerokość">
+                    </li>
+                    <li>
+                        <label><i class="fas fa-arrows-alt-v"><b>Wysokość</b> </i></label>
+                        <input name="height" type="number" min="1" placeholder="Wysokość">
+                    </li>
+                    <li>
+                        <label><i class="fas fa-expand-alt"><b>Głębokość:</b> </i></label>
+                        <input name="depth" type="number" min="1" placeholder="Głębokość">
+                    </li>
+                    <li>
+                        <label><i class="fas fa-route"><b>Długość trasy:</b> </i></label>
+                        <input name="route" type="number" min="1" placeholder="Długość trasy">
+                    </li>
+                </ul>
 
-            <div class="result">
-                <div class="price">
-                    <span><i class="fas fa-coins"><b>Cena:</b></i></span>
-                    <output class="output-result">0</output>
+                <div class="result">
+                    <div class="price">
+                        <span><i class="fas fa-coins"><b>Cena:</b></i></span>
+                        <output class="output-result">0</output>
+                    </div>
+                    <button class="calculate-button">Oblicz</button>
                 </div>
-                <button class="calculate-button">Oblicz</button>
             </div>
-        </div>
 
-        <div class="quotation_result">
+            <div class="separator"></div>
+
             <div class="web_slogan">
                 <div class="logo">
                     <img src="public/img/logo.svg">
@@ -57,7 +59,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <?php include "footer_bar.php"; ?>
 </body>

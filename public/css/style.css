@@ -252,6 +252,107 @@ p > a {
     color: red;
 }
 
+main > #chat-interface {
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+    height: 75vh;
+    background-color: #fff;
+    border-radius: 1em;
+    align-items: center;
+}
+
+#chat-interface > #recipient-select{
+    width: 100%;
+    height: 4vh;
+    margin-bottom: 1vh;
+    padding-left: 2vw;
+    border-radius: 0.85em 0.85em 0 0;
+    font-size: 1.2em;
+    background-color: #008FFF;
+    color: #FFF800;
+}
+
+#chat-interface > #recipient-select > option{
+    background-color: #fff;
+}
+
+#chat-interface > #messages{
+    width: 100%;
+    height: 62vh;
+    margin-bottom: 1vh;
+    padding: 0 2em 0 2em;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+
+}
+
+#chat-interface > #messages > div {
+    margin-top: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: #f4f4f4;
+    color: white;
+    align-self: flex-start;
+    align-items: flex-start;
+    max-width: 80%;
+}
+
+#chat-interface > #messages > div > p {
+    font-size: 0.7em;
+}
+
+#chat-interface > #messages > div > span {
+    word-wrap: break-word;
+}
+
+#chat-interface > #messages > div.sender {
+    background-color: #0084ff;
+    color: black;
+    align-self: flex-end;
+    align-items: flex-end;
+    text-align: right;
+}
+
+
+
+#chat-interface > #message-form{
+    display: flex;
+    width: 100%;
+    height: 7vh;
+    background-color: #eee;
+    border-radius: 0 0 0.85em 0.85em;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#chat-interface > #message-form > input {
+    width: 70%
+}
+
+#chat-interface > #message-form > div{
+    display: flex;
+    flex-direction: row;
+    width: 12%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#chat-interface > #message-form > div > i, #chat-interface > #message-form > button > i {
+    color: #004CFF;
+    font-size: 1.5em;
+}
+
+#chat-interface > #message-form > button {
+    border: 1px solid black;
+    background-color: #F8F817;
+    font-size: .8em;
+    padding: 1em;
+    border-radius: 2em;
+    text-align: center;
+}
 
 /*  justify-content: center;
     justify-items: center;

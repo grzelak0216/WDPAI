@@ -27,8 +27,8 @@ Router::post('removeCourierNotice', 'CourierController');
 
 Router::get('recipients', 'DefaultController');
 Router::get('chat', 'DefaultController');
-//Router::post('recipients', 'DefaultController');
-//Router::post('chat', 'DefaultController');
-
+Router::post('sendMessage', 'MessageController');
+Router::post("getMessages", "MessageController");
+Router::post("getEmailById", "SecurityController");
 
 Router::run($path);

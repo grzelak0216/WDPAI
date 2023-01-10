@@ -19,9 +19,9 @@ services:
     volumes:
       - .:/app/
 
-  websocket:
-    build:
-      context: .
-      dockerfile: docker/websocket/Dockerfile
-    volumes:
-      - .:/app/
+  # websocket:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/websocket/Dockerfile
+  #   volumes:
+  #     - .:/app/

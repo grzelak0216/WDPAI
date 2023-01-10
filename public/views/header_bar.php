@@ -28,6 +28,7 @@
                 echo '<li><a href="http://localhost:8080">Start</a></li>
                         <li><a href="http://localhost:8080/profile_notice">Profil</a></li> 
                         <li><a href="http://localhost:8080/quotation">Wycena</a></li> 
+                        <li><a href="http://localhost:8080/chat">Chat</a></li> 
                         <li><a href="http://localhost:8080/logout">Wyloguj</a></li>
                         <li><a href="http://localhost:8080/courier_notice">Szukaj ogłoszenie kurierskie</a></li>
                         <li><a href="http://localhost:8080/transport_notice">Szukaj ogłoszenie transportu</a></li> 
